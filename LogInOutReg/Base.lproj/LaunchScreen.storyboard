@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO2" translatesAutoresizingMaskIntoConstraints="NO" id="j2W-h4-tHr">
+                                <rect key="frame" x="20" y="170" width="560" height="255"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="255" id="w93-Z6-RLP"/>
+                                    <constraint firstAttribute="width" constant="560" id="yXF-YB-EDl"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="oXY-hs-bCs">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="j2W-h4-tHr" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="150" id="8j3-nO-2A1"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="oXY-hs-bCs" secondAttribute="bottom" id="LZc-ve-nRi"/>
+                            <constraint firstItem="j2W-h4-tHr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="N8d-9E-bg1"/>
+                            <constraint firstItem="oXY-hs-bCs" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="O2a-XC-BbI"/>
+                            <constraint firstItem="oXY-hs-bCs" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="Oup-lA-L6f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oXY-hs-bCs" secondAttribute="trailing" constant="-20" id="dUn-tm-3rE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LOGO2" width="300" height="200"/>
+        <image name="background" width="320" height="568"/>
+    </resources>
+</document>
