@@ -18,9 +18,35 @@
 		5D9710A71CC2B33800D71CC6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9710A41CC2B33800D71CC6 /* FBSDKCoreKit.framework */; };
 		5D9710A81CC2B33800D71CC6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9710A51CC2B33800D71CC6 /* FBSDKLoginKit.framework */; };
 		5D9710AC1CC2C26100D71CC6 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9710AB1CC2C26100D71CC6 /* MainMenuViewController.m */; };
+		83033F371CD88A6600FFB27C /* bgm in Resources */ = {isa = PBXBuildFile; fileRef = 83033F361CD88A6600FFB27C /* bgm */; };
+		83033F391CD88A7C00FFB27C /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 83033F381CD88A7C00FFB27C /* sound */; };
 		838402E61CD4A2E200E484E1 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 838402E41CD4A2E200E484E1 /* 1.wav */; };
 		838402E71CD4A2E200E484E1 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 838402E51CD4A2E200E484E1 /* backgroundMusic.mp3 */; };
 		838402E91CD4A3A300E484E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838402E81CD4A3A300E484E1 /* AVFoundation.framework */; };
+		83B5C8D31CD88692009C9F8C /* AI.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8A61CD88692009C9F8C /* AI.m */; };
+		83B5C8D41CD88692009C9F8C /* AIPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8A81CD88692009C9F8C /* AIPlayer.m */; };
+		83B5C8D51CD88692009C9F8C /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8AA1CD88692009C9F8C /* Block.m */; };
+		83B5C8D61CD88692009C9F8C /* BlockButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8AC1CD88692009C9F8C /* BlockButton.m */; };
+		83B5C8D71CD88692009C9F8C /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8AE1CD88692009C9F8C /* Board.m */; };
+		83B5C8D81CD88692009C9F8C /* CallNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8B01CD88692009C9F8C /* CallNumbers.m */; };
+		83B5C8D91CD88692009C9F8C /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8B21CD88692009C9F8C /* GameCenterManager.m */; };
+		83B5C8DA1CD88692009C9F8C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8B41CD88692009C9F8C /* GameViewController.m */; };
+		83B5C8DB1CD88692009C9F8C /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8B61CD88692009C9F8C /* Line.m */; };
+		83B5C8DC1CD88692009C9F8C /* MultiPlayerGameViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8B81CD88692009C9F8C /* MultiPlayerGameViewcontroller.m */; };
+		83B5C8DD1CD88692009C9F8C /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8BA1CD88692009C9F8C /* Player.m */; };
+		83B5C8DE1CD88692009C9F8C /* PlayMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8BC1CD88692009C9F8C /* PlayMainMenuViewController.m */; };
+		83B5C8DF1CD88692009C9F8C /* SinglePlayerGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8BE1CD88692009C9F8C /* SinglePlayerGameViewController.m */; };
+		83B5C8E01CD88692009C9F8C /* Skill.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8C01CD88692009C9F8C /* Skill.m */; };
+		83B5C8E11CD88692009C9F8C /* SkillAid.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8C21CD88692009C9F8C /* SkillAid.m */; };
+		83B5C8E21CD88692009C9F8C /* SkillButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8C41CD88692009C9F8C /* SkillButton.m */; };
+		83B5C8E31CD88692009C9F8C /* SkillData.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8C61CD88692009C9F8C /* SkillData.m */; };
+		83B5C8E41CD88692009C9F8C /* SkillDestroy.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8C81CD88692009C9F8C /* SkillDestroy.m */; };
+		83B5C8E51CD88692009C9F8C /* SkillSeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8CA1CD88692009C9F8C /* SkillSeal.m */; };
+		83B5C8E61CD88692009C9F8C /* State.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8CC1CD88692009C9F8C /* State.m */; };
+		83B5C8E71CD88692009C9F8C /* StateAid.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8CE1CD88692009C9F8C /* StateAid.m */; };
+		83B5C8E81CD88692009C9F8C /* StateData.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8D01CD88692009C9F8C /* StateData.m */; };
+		83B5C8E91CD88692009C9F8C /* StateSeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8D21CD88692009C9F8C /* StateSeal.m */; };
+		83B5C8EC1CD886BE009C9F8C /* StateDestroy.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8EB1CD886BE009C9F8C /* StateDestroy.m */; };
 		956CEC881CCE937A0039017E /* LeaderboardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 956CEC851CCE937A0039017E /* LeaderboardTableViewCell.m */; };
 		956CEC891CCE937A0039017E /* LeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 956CEC871CCE937A0039017E /* LeaderboardViewController.m */; };
 		956CEC8B1CCE965F0039017E /* 123456.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 956CEC8A1CCE965F0039017E /* 123456.jpg */; };
@@ -48,9 +74,59 @@
 		5D9710A51CC2B33800D71CC6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		5D9710AA1CC2C26100D71CC6 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		5D9710AB1CC2C26100D71CC6 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		83033F361CD88A6600FFB27C /* bgm */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bgm; path = LogInOutReg/bgm; sourceTree = "<group>"; };
+		83033F381CD88A7C00FFB27C /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = LogInOutReg/sound; sourceTree = "<group>"; };
 		838402E41CD4A2E200E484E1 /* 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1.wav; sourceTree = "<group>"; };
 		838402E51CD4A2E200E484E1 /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
 		838402E81CD4A3A300E484E1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		83B5C8A51CD88692009C9F8C /* AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AI.h; sourceTree = "<group>"; };
+		83B5C8A61CD88692009C9F8C /* AI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AI.m; sourceTree = "<group>"; };
+		83B5C8A71CD88692009C9F8C /* AIPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIPlayer.h; sourceTree = "<group>"; };
+		83B5C8A81CD88692009C9F8C /* AIPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIPlayer.m; sourceTree = "<group>"; };
+		83B5C8A91CD88692009C9F8C /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
+		83B5C8AA1CD88692009C9F8C /* Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Block.m; sourceTree = "<group>"; };
+		83B5C8AB1CD88692009C9F8C /* BlockButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockButton.h; sourceTree = "<group>"; };
+		83B5C8AC1CD88692009C9F8C /* BlockButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockButton.m; sourceTree = "<group>"; };
+		83B5C8AD1CD88692009C9F8C /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
+		83B5C8AE1CD88692009C9F8C /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
+		83B5C8AF1CD88692009C9F8C /* CallNumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallNumbers.h; sourceTree = "<group>"; };
+		83B5C8B01CD88692009C9F8C /* CallNumbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallNumbers.m; sourceTree = "<group>"; };
+		83B5C8B11CD88692009C9F8C /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
+		83B5C8B21CD88692009C9F8C /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
+		83B5C8B31CD88692009C9F8C /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		83B5C8B41CD88692009C9F8C /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		83B5C8B51CD88692009C9F8C /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		83B5C8B61CD88692009C9F8C /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
+		83B5C8B71CD88692009C9F8C /* MultiPlayerGameViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiPlayerGameViewcontroller.h; sourceTree = "<group>"; };
+		83B5C8B81CD88692009C9F8C /* MultiPlayerGameViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiPlayerGameViewcontroller.m; sourceTree = "<group>"; };
+		83B5C8B91CD88692009C9F8C /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		83B5C8BA1CD88692009C9F8C /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		83B5C8BB1CD88692009C9F8C /* PlayMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayMainMenuViewController.h; sourceTree = "<group>"; };
+		83B5C8BC1CD88692009C9F8C /* PlayMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayMainMenuViewController.m; sourceTree = "<group>"; };
+		83B5C8BD1CD88692009C9F8C /* SinglePlayerGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePlayerGameViewController.h; sourceTree = "<group>"; };
+		83B5C8BE1CD88692009C9F8C /* SinglePlayerGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePlayerGameViewController.m; sourceTree = "<group>"; };
+		83B5C8BF1CD88692009C9F8C /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
+		83B5C8C01CD88692009C9F8C /* Skill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Skill.m; sourceTree = "<group>"; };
+		83B5C8C11CD88692009C9F8C /* SkillAid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillAid.h; sourceTree = "<group>"; };
+		83B5C8C21CD88692009C9F8C /* SkillAid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillAid.m; sourceTree = "<group>"; };
+		83B5C8C31CD88692009C9F8C /* SkillButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillButton.h; sourceTree = "<group>"; };
+		83B5C8C41CD88692009C9F8C /* SkillButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillButton.m; sourceTree = "<group>"; };
+		83B5C8C51CD88692009C9F8C /* SkillData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillData.h; sourceTree = "<group>"; };
+		83B5C8C61CD88692009C9F8C /* SkillData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillData.m; sourceTree = "<group>"; };
+		83B5C8C71CD88692009C9F8C /* SkillDestroy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillDestroy.h; sourceTree = "<group>"; };
+		83B5C8C81CD88692009C9F8C /* SkillDestroy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillDestroy.m; sourceTree = "<group>"; };
+		83B5C8C91CD88692009C9F8C /* SkillSeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillSeal.h; sourceTree = "<group>"; };
+		83B5C8CA1CD88692009C9F8C /* SkillSeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillSeal.m; sourceTree = "<group>"; };
+		83B5C8CB1CD88692009C9F8C /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
+		83B5C8CC1CD88692009C9F8C /* State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = State.m; sourceTree = "<group>"; };
+		83B5C8CD1CD88692009C9F8C /* StateAid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateAid.h; sourceTree = "<group>"; };
+		83B5C8CE1CD88692009C9F8C /* StateAid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateAid.m; sourceTree = "<group>"; };
+		83B5C8CF1CD88692009C9F8C /* StateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateData.h; sourceTree = "<group>"; };
+		83B5C8D01CD88692009C9F8C /* StateData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateData.m; sourceTree = "<group>"; };
+		83B5C8D11CD88692009C9F8C /* StateSeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateSeal.h; sourceTree = "<group>"; };
+		83B5C8D21CD88692009C9F8C /* StateSeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateSeal.m; sourceTree = "<group>"; };
+		83B5C8EA1CD886BE009C9F8C /* StateDestroy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateDestroy.h; sourceTree = "<group>"; };
+		83B5C8EB1CD886BE009C9F8C /* StateDestroy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateDestroy.m; sourceTree = "<group>"; };
 		956CEC841CCE937A0039017E /* LeaderboardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardTableViewCell.h; sourceTree = "<group>"; };
 		956CEC851CCE937A0039017E /* LeaderboardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardTableViewCell.m; sourceTree = "<group>"; };
 		956CEC861CCE937A0039017E /* LeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardViewController.h; sourceTree = "<group>"; };
@@ -82,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				5D80D00C1CAD5F0900F0B991 /* BingGoBlast */,
+				83033F361CD88A6600FFB27C /* bgm */,
+				83033F381CD88A7C00FFB27C /* sound */,
 				5D80D00B1CAD5F0900F0B991 /* Products */,
 				838402E81CD4A3A300E484E1 /* AVFoundation.framework */,
 				956CEC911CCF3B250039017E /* AssetsLibrary.framework */,
@@ -104,16 +182,10 @@
 				838402E41CD4A2E200E484E1 /* 1.wav */,
 				838402E51CD4A2E200E484E1 /* backgroundMusic.mp3 */,
 				5D80D0161CAD5F0900F0B991 /* Main.storyboard */,
+				83B5C8A41CD88394009C9F8C /* game */,
 				5D80D0101CAD5F0900F0B991 /* AppDelegate.h */,
 				5D80D0111CAD5F0900F0B991 /* AppDelegate.m */,
-				5D80D0131CAD5F0900F0B991 /* EntranceViewController.h */,
-				5D80D0141CAD5F0900F0B991 /* EntranceViewController.m */,
-				5D9710AA1CC2C26100D71CC6 /* MainMenuViewController.h */,
-				5D9710AB1CC2C26100D71CC6 /* MainMenuViewController.m */,
-				956CEC9A1CCF5C560039017E /* SettingsViewController.h */,
-				956CEC9B1CCF5C560039017E /* SettingsViewController.m */,
-				956CEC901CCF3AE80039017E /* LoginOutRegGroup */,
-				956CEC8F1CCF3A990039017E /* HowToPlay Group */,
+				956CEC901CCF3AE80039017E /* Login */,
 				956CEC831CCE93240039017E /* LeaderboardGroup */,
 				5D80D01B1CAD5F0900F0B991 /* LaunchScreen.storyboard */,
 				5D80D0191CAD5F0900F0B991 /* Assets.xcassets */,
@@ -132,6 +204,133 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		83B5C8A41CD88394009C9F8C /* game */ = {
+			isa = PBXGroup;
+			children = (
+				83B5C8F31CD887F7009C9F8C /* Mechanisn */,
+				83B5C8F41CD8881D009C9F8C /* Player */,
+				83B5C8ED1CD886EF009C9F8C /* UI */,
+				83B5C8F21CD887C5009C9F8C /* Deprecated */,
+			);
+			name = game;
+			sourceTree = "<group>";
+		};
+		83B5C8ED1CD886EF009C9F8C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				83B5C8EE1CD88724009C9F8C /* ViewController */,
+				83B5C8AB1CD88692009C9F8C /* BlockButton.h */,
+				83B5C8AC1CD88692009C9F8C /* BlockButton.m */,
+				83B5C8C31CD88692009C9F8C /* SkillButton.h */,
+				83B5C8C41CD88692009C9F8C /* SkillButton.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		83B5C8EE1CD88724009C9F8C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				83B5C8B71CD88692009C9F8C /* MultiPlayerGameViewcontroller.h */,
+				83B5C8B81CD88692009C9F8C /* MultiPlayerGameViewcontroller.m */,
+				83B5C8B11CD88692009C9F8C /* GameCenterManager.h */,
+				83B5C8B21CD88692009C9F8C /* GameCenterManager.m */,
+				83B5C8B31CD88692009C9F8C /* GameViewController.h */,
+				83B5C8B41CD88692009C9F8C /* GameViewController.m */,
+				83B5C8BB1CD88692009C9F8C /* PlayMainMenuViewController.h */,
+				83B5C8BC1CD88692009C9F8C /* PlayMainMenuViewController.m */,
+				83B5C8BD1CD88692009C9F8C /* SinglePlayerGameViewController.h */,
+				83B5C8BE1CD88692009C9F8C /* SinglePlayerGameViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		83B5C8EF1CD88766009C9F8C /* State */ = {
+			isa = PBXGroup;
+			children = (
+				83B5C8CD1CD88692009C9F8C /* StateAid.h */,
+				83B5C8CB1CD88692009C9F8C /* State.h */,
+				83B5C8CC1CD88692009C9F8C /* State.m */,
+				83B5C8EA1CD886BE009C9F8C /* StateDestroy.h */,
+				83B5C8EB1CD886BE009C9F8C /* StateDestroy.m */,
+				83B5C8CE1CD88692009C9F8C /* StateAid.m */,
+				83B5C8D11CD88692009C9F8C /* StateSeal.h */,
+				83B5C8D21CD88692009C9F8C /* StateSeal.m */,
+			);
+			name = State;
+			sourceTree = "<group>";
+		};
+		83B5C8F01CD88786009C9F8C /* Skill */ = {
+			isa = PBXGroup;
+			children = (
+				83B5C8BF1CD88692009C9F8C /* Skill.h */,
+				83B5C8C01CD88692009C9F8C /* Skill.m */,
+				83B5C8C11CD88692009C9F8C /* SkillAid.h */,
+				83B5C8C21CD88692009C9F8C /* SkillAid.m */,
+				83B5C8C71CD88692009C9F8C /* SkillDestroy.h */,
+				83B5C8C81CD88692009C9F8C /* SkillDestroy.m */,
+				83B5C8C91CD88692009C9F8C /* SkillSeal.h */,
+				83B5C8CA1CD88692009C9F8C /* SkillSeal.m */,
+			);
+			name = Skill;
+			sourceTree = "<group>";
+		};
+		83B5C8F11CD887A9009C9F8C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				83B5C8C51CD88692009C9F8C /* SkillData.h */,
+				83B5C8C61CD88692009C9F8C /* SkillData.m */,
+				83B5C8CF1CD88692009C9F8C /* StateData.h */,
+				83B5C8D01CD88692009C9F8C /* StateData.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		83B5C8F21CD887C5009C9F8C /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				83B5C8A71CD88692009C9F8C /* AIPlayer.h */,
+				83B5C8A81CD88692009C9F8C /* AIPlayer.m */,
+			);
+			name = Deprecated;
+			sourceTree = "<group>";
+		};
+		83B5C8F31CD887F7009C9F8C /* Mechanisn */ = {
+			isa = PBXGroup;
+			children = (
+				83B5C8F01CD88786009C9F8C /* Skill */,
+				83B5C8F11CD887A9009C9F8C /* Data */,
+				83B5C8EF1CD88766009C9F8C /* State */,
+				83B5C8F51CD88849009C9F8C /* Board */,
+				83B5C8AF1CD88692009C9F8C /* CallNumbers.h */,
+				83B5C8B01CD88692009C9F8C /* CallNumbers.m */,
+			);
+			name = Mechanisn;
+			sourceTree = "<group>";
+		};
+		83B5C8F41CD8881D009C9F8C /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				83B5C8A51CD88692009C9F8C /* AI.h */,
+				83B5C8A61CD88692009C9F8C /* AI.m */,
+				83B5C8B91CD88692009C9F8C /* Player.h */,
+				83B5C8BA1CD88692009C9F8C /* Player.m */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		83B5C8F51CD88849009C9F8C /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				83B5C8A91CD88692009C9F8C /* Block.h */,
+				83B5C8AA1CD88692009C9F8C /* Block.m */,
+				83B5C8AD1CD88692009C9F8C /* Board.h */,
+				83B5C8AE1CD88692009C9F8C /* Board.m */,
+				83B5C8B51CD88692009C9F8C /* Line.h */,
+				83B5C8B61CD88692009C9F8C /* Line.m */,
+			);
+			name = Board;
+			sourceTree = "<group>";
+		};
 		956CEC831CCE93240039017E /* LeaderboardGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,24 +343,23 @@
 			name = LeaderboardGroup;
 			sourceTree = "<group>";
 		};
-		956CEC8F1CCF3A990039017E /* HowToPlay Group */ = {
+		956CEC901CCF3AE80039017E /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				956CEC8C1CCF10BA0039017E /* HolleToPlayViewController.h */,
-				956CEC8D1CCF10BA0039017E /* HolleToPlayViewController.m */,
-			);
-			name = "HowToPlay Group";
-			sourceTree = "<group>";
-		};
-		956CEC901CCF3AE80039017E /* LoginOutRegGroup */ = {
-			isa = PBXGroup;
-			children = (
+				5D80D0131CAD5F0900F0B991 /* EntranceViewController.h */,
+				5D80D0141CAD5F0900F0B991 /* EntranceViewController.m */,
 				5D80D0241CAD636700F0B991 /* LoginViewController.h */,
 				5D80D0251CAD636700F0B991 /* LoginViewController.m */,
 				5D93461B1CB3BC560068DD22 /* RegisterViewController.h */,
 				5D93461C1CB3BC560068DD22 /* RegisterViewController.m */,
+				5D9710AA1CC2C26100D71CC6 /* MainMenuViewController.h */,
+				5D9710AB1CC2C26100D71CC6 /* MainMenuViewController.m */,
+				956CEC9A1CCF5C560039017E /* SettingsViewController.h */,
+				956CEC9B1CCF5C560039017E /* SettingsViewController.m */,
+				956CEC8C1CCF10BA0039017E /* HolleToPlayViewController.h */,
+				956CEC8D1CCF10BA0039017E /* HolleToPlayViewController.m */,
 			);
-			name = LoginOutRegGroup;
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,8 +423,10 @@
 				838402E71CD4A2E200E484E1 /* backgroundMusic.mp3 in Resources */,
 				838402E61CD4A2E200E484E1 /* 1.wav in Resources */,
 				5D80D01D1CAD5F0900F0B991 /* LaunchScreen.storyboard in Resources */,
+				83033F371CD88A6600FFB27C /* bgm in Resources */,
 				5D80D01A1CAD5F0900F0B991 /* Assets.xcassets in Resources */,
 				956CEC8B1CCE965F0039017E /* 123456.jpg in Resources */,
+				83033F391CD88A7C00FFB27C /* sound in Resources */,
 				5D80D0181CAD5F0900F0B991 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,16 +438,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B5C8D81CD88692009C9F8C /* CallNumbers.m in Sources */,
+				83B5C8E81CD88692009C9F8C /* StateData.m in Sources */,
+				83B5C8D41CD88692009C9F8C /* AIPlayer.m in Sources */,
+				83B5C8DF1CD88692009C9F8C /* SinglePlayerGameViewController.m in Sources */,
 				5D80D0261CAD636700F0B991 /* LoginViewController.m in Sources */,
 				5D93461D1CB3BC570068DD22 /* RegisterViewController.m in Sources */,
+				83B5C8DA1CD88692009C9F8C /* GameViewController.m in Sources */,
+				83B5C8DB1CD88692009C9F8C /* Line.m in Sources */,
 				956CEC891CCE937A0039017E /* LeaderboardViewController.m in Sources */,
 				956CEC881CCE937A0039017E /* LeaderboardTableViewCell.m in Sources */,
+				83B5C8E31CD88692009C9F8C /* SkillData.m in Sources */,
+				83B5C8E91CD88692009C9F8C /* StateSeal.m in Sources */,
+				83B5C8E41CD88692009C9F8C /* SkillDestroy.m in Sources */,
+				83B5C8E11CD88692009C9F8C /* SkillAid.m in Sources */,
+				83B5C8EC1CD886BE009C9F8C /* StateDestroy.m in Sources */,
+				83B5C8E01CD88692009C9F8C /* Skill.m in Sources */,
 				5D80D0151CAD5F0900F0B991 /* EntranceViewController.m in Sources */,
 				5D80D0121CAD5F0900F0B991 /* AppDelegate.m in Sources */,
+				83B5C8D61CD88692009C9F8C /* BlockButton.m in Sources */,
 				5D80D00F1CAD5F0900F0B991 /* main.m in Sources */,
+				83B5C8D71CD88692009C9F8C /* Board.m in Sources */,
+				83B5C8D51CD88692009C9F8C /* Block.m in Sources */,
+				83B5C8DE1CD88692009C9F8C /* PlayMainMenuViewController.m in Sources */,
 				956CEC9C1CCF5C560039017E /* SettingsViewController.m in Sources */,
+				83B5C8E61CD88692009C9F8C /* State.m in Sources */,
+				83B5C8E21CD88692009C9F8C /* SkillButton.m in Sources */,
 				956CEC8E1CCF10BA0039017E /* HolleToPlayViewController.m in Sources */,
+				83B5C8D31CD88692009C9F8C /* AI.m in Sources */,
 				5D9710AC1CC2C26100D71CC6 /* MainMenuViewController.m in Sources */,
+				83B5C8E51CD88692009C9F8C /* SkillSeal.m in Sources */,
+				83B5C8E71CD88692009C9F8C /* StateAid.m in Sources */,
+				83B5C8D91CD88692009C9F8C /* GameCenterManager.m in Sources */,
+				83B5C8DD1CD88692009C9F8C /* Player.m in Sources */,
+				83B5C8DC1CD88692009C9F8C /* MultiPlayerGameViewcontroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

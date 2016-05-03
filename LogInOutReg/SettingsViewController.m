@@ -10,14 +10,20 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "LoginViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "EntranceViewController.h"
 
 
 @interface SettingsViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 {
     NSUserDefaults * userDefaults;
+    FBSDKAccessToken * accesssToken;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *settingImageView;
 @property (weak, nonatomic) IBOutlet UITextField *settingNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *settingEmailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *setttingPasswordTextField;
 
 @end
 
@@ -28,13 +34,18 @@
     // Do any additional setup after loading the view.
     userDefaults = [NSUserDefaults standardUserDefaults];
     self.settingNameTextField.text = [userDefaults objectForKey:@"Name"];
+    self.settingEmailTextField.text = [userDefaults objectForKey:@"Email"];
+    accesssToken = [FBSDKAccessToken currentAccessToken];
+    if (accesssToken) {
+        self.setttingPasswordTextField.text = @"";
+    } else {
+    self.setttingPasswordTextField.text = [userDefaults objectForKey:@"Password"];
+    }
     
-    //宣告一個 TapGesture <--點按式
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dimissKeyboard)];
-    // 將手勢加到 view 上，才有作用
     [self.view addGestureRecognizer:tapRecognizer];
     
-    self.settingNameTextField.delegate =self;
+//    self.settingNameTextField.delegate =self;
 }
 
 -(void)dimissKeyboard {
@@ -165,6 +176,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)logOutButton:(id)sender {
+    
+    //FB logout
+    [[FBSDKLoginManager new] logOut];
+    
+    //Account logout
+    [userDefaults setBool:false forKey:@"isUserLoggedIn"];
+    [userDefaults synchronize];
+    UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    EntranceViewController * mmvc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"EntranceViewController"];
+    [self presentViewController:mmvc animated:true completion:nil];
+}
 
 /*
 #pragma mark - Navigation

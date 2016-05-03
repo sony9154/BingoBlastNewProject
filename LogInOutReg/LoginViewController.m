@@ -25,21 +25,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     
     self.navigationItem.title = @"登入";
-    
     FBSDKLoginButton *fbLoginButton = [[FBSDKLoginButton alloc] init];
     fbLoginButton.delegate = self;
     fbLoginButton.frame = CGRectMake((self.view.frame.size.width - fbLoginButton.frame.size.width)/2, self.view.frame.size.height * 0.8, fbLoginButton.frame.size.width, fbLoginButton.frame.size.height);
     [self.view addSubview:fbLoginButton];
     fbLoginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     
-    //宣告一個 TapGesture <--點按式
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dimissKeyboard)];
-    // 將手勢加到 view 上，才有作用
-    [self.view addGestureRecognizer:tapRecognizer];
     
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dimissKeyboard)];
+    [self.view addGestureRecognizer:tapRecognizer];
     self.userEmailTextField.delegate =self;
     self.userPasswordTextField.delegate = self;
     
@@ -66,6 +63,7 @@
          NSString *userEmail = (NSString*)result[@"email"];
          NSString *userNickname = (NSString*)result[@"name"];
          [[NSUserDefaults standardUserDefaults]setObject:userNickname forKey:@"Name"];
+         [[NSUserDefaults standardUserDefaults]setObject:userEmail forKey:@"Email"];
          [[NSUserDefaults standardUserDefaults]synchronize];
          NSURL *myURL = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/facebookLogin.php"];
          NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myURL];
@@ -158,6 +156,8 @@
                     //mainMenuViewController.successName = self.userEmailTextField.text;
                     mainMenuViewController.successNickname = resultNickname;
                 [[NSUserDefaults standardUserDefaults]setObject:resultNickname forKey:@"Name"];
+                [[NSUserDefaults standardUserDefaults]setObject:userEmail forKey:@"Email"];
+                [[NSUserDefaults standardUserDefaults]setObject:userPassword forKey:@"Password"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
 
                 [self showViewController:mainMenuViewController sender:nil];
@@ -195,15 +195,4 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

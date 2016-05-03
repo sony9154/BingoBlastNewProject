@@ -17,6 +17,7 @@
 {
     NSUserDefaults * userDefaults;
     AVAudioPlayer * audioPlayer;
+    FBSDKAccessToken* accessToken;
 }
 
 @end
@@ -25,11 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     userDefaults  = [NSUserDefaults standardUserDefaults];
-//    UIBarButtonItem * backItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
-//    self.navigationItem.backBarButtonItem = backItem;
-    
     //Music
     NSString * musicFilePath = [[NSBundle mainBundle] pathForResource:@"backgroundMusic" ofType:@"mp3"];
     NSURL * soundFileURL = [NSURL fileURLWithPath:musicFilePath];
@@ -52,7 +49,7 @@
     
     UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     
-    FBSDKAccessToken* accessToken = [FBSDKAccessToken currentAccessToken];
+    accessToken = [FBSDKAccessToken currentAccessToken];
     if(accessToken){
         MainMenuViewController* mmvc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainMenuViewController"];
         [self presentViewController:mmvc animated:true completion:nil];

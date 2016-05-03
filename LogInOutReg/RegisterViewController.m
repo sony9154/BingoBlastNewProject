@@ -26,9 +26,7 @@
     
     self.navigationItem.title = @"註冊";
     
-    //宣告一個 TapGesture <--點按式
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dimissKeyboard)];
-    // 將手勢加到 view 上，才有作用
     [self.view addGestureRecognizer:tapRecognizer];
     
     self.userEmailTextField.delegate = self;
@@ -74,8 +72,8 @@
         return;
     }
     
-    //NSURL *myURL = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/userRegister.php"];
-    NSURL *myURL = [NSURL URLWithString:@"http://localhost:8888/userRegister.php"];
+    NSURL *myURL = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/userRegister.php"];
+//    NSURL *myURL = [NSURL URLWithString:@"http://localhost:8888/userRegister.php"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myURL];
     request.HTTPMethod = @"POST";
