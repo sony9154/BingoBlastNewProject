@@ -31,11 +31,17 @@
     
     NSLog(@"userNameLabel is : %@",self.userNameLabel.text);
     
-    UIImage *image = [UIImage imageNamed:@"123456.jpg"];
+    UIImage * image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
     self.useImageView.layer.masksToBounds = true;
     self.useImageView.layer.cornerRadius = 22.0;
     self.useImageView.image = image;
-    
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    UIImage * image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
+    self.useImageView.layer.masksToBounds = true;
+    self.useImageView.layer.cornerRadius = 22.0;
+    self.useImageView.image = image;
 }
 
 - (void)didReceiveMemoryWarning {

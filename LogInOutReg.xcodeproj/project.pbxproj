@@ -393,7 +393,7 @@
 				TargetAttributes = {
 					5D80D0091CAD5F0900F0B991 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = G66UXEL2H5;
+						DevelopmentTeam = 9G975X653N;
 					};
 				};
 			};
@@ -600,7 +600,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhengWei-Li.LogInOutReg";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hdes93404lg.LogInOutReg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -621,7 +621,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhengWei-Li.LogInOutReg";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hdes93404lg.LogInOutReg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "arm64 armv7 armv7s";

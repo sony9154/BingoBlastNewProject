@@ -45,7 +45,9 @@
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dimissKeyboard)];
     [self.view addGestureRecognizer:tapRecognizer];
     
-//    self.settingNameTextField.delegate =self;
+    UIImage * image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
+    self.settingImageView.image = image;
+    
 }
 
 -(void)dimissKeyboard {
@@ -98,7 +100,7 @@
     [self presentViewController:imagePicker animated:true completion:nil];
 }
 
-- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info {
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:( NSDictionary<NSString *,id> *)info {
     
     NSString *type = info[UIImagePickerControllerMediaType];
     
@@ -112,6 +114,9 @@
         NSLog(@"PhototSize: %fx%f (%ld bytes)",originalImage.size.width,originalImage.size.height,jpegData.length);
         
         _settingImageView.image = resizedImage;
+        
+        [userDefaults setObject:UIImagePNGRepresentation(resizedImage) forKey:@"image"];
+        [userDefaults synchronize];
         
         // Save in Photo Library
         [self saveToPhotoLibrary:resizedImage];

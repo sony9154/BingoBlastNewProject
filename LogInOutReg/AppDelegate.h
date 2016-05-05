@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  AppDelegate.h. ZhengWei-Li
 //  LogInOutReg
 //
 //  Created by Peter Yo on 3月/31/16.
