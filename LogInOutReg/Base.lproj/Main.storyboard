@@ -122,6 +122,9 @@
                                 <state key="normal" title="點擊找回">
                                     <color key="titleColor" red="0.99917868589743586" green="0.99917868589743586" blue="0.99917868589743586" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="tor-Lh-7ry" kind="show" id="HPV-sO-Ibb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NwF-Ya-lST">
                                 <rect key="frame" x="450" y="368" width="60" height="30"/>
@@ -233,6 +236,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jla-hQ-Gtc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="59" y="-950"/>
+        </scene>
+        <!--Password Retrive View Controller-->
+        <scene sceneID="NcT-Fm-bbT">
+            <objects>
+                <viewController id="tor-Lh-7ry" customClass="PasswordRetriveViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dtl-5g-5Vm"/>
+                        <viewControllerLayoutGuide type="bottom" id="ume-bh-E3Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eYO-wU-xSy" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入註冊的email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YUE-st-Sl6">
+                                <rect key="frame" x="20" y="104" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找回密碼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ED-zB-xM2">
+                                <rect key="frame" x="266" y="42" width="68" height="21"/>
+                                <color key="backgroundColor" red="0.15579551059999999" green="0.79837572629999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UR8-CE-gpa">
+                                <rect key="frame" x="267" y="177" width="67" height="30"/>
+                                <state key="normal" title="寄出email"/>
+                                <connections>
+                                    <action selector="sendEmailBtnPressed:" destination="tor-Lh-7ry" eventType="touchUpInside" id="4PF-nn-29n"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMI-vG-9TC">
+                                <rect key="frame" x="20" y="20" width="52" height="30"/>
+                                <state key="normal" title="goBack"/>
+                                <connections>
+                                    <action selector="goBack:" destination="tor-Lh-7ry" eventType="touchUpInside" id="n6H-hi-gYP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UR8-CE-gpa" firstAttribute="centerX" secondItem="eYO-wU-xSy" secondAttribute="centerX" id="Jd2-3k-MuZ"/>
+                            <constraint firstItem="YUE-st-Sl6" firstAttribute="top" secondItem="dtl-5g-5Vm" secondAttribute="bottom" constant="84" id="Kqt-CM-KdA"/>
+                            <constraint firstItem="7ED-zB-xM2" firstAttribute="top" secondItem="dtl-5g-5Vm" secondAttribute="bottom" constant="22" id="LhC-Ks-Mot"/>
+                            <constraint firstItem="YUE-st-Sl6" firstAttribute="trailing" secondItem="eYO-wU-xSy" secondAttribute="trailingMargin" id="NsL-xp-vSO"/>
+                            <constraint firstItem="YUE-st-Sl6" firstAttribute="leading" secondItem="eYO-wU-xSy" secondAttribute="leadingMargin" id="OjM-ls-MGK"/>
+                            <constraint firstItem="UR8-CE-gpa" firstAttribute="top" secondItem="YUE-st-Sl6" secondAttribute="bottom" constant="43" id="jWp-XA-VLx"/>
+                            <constraint firstItem="PMI-vG-9TC" firstAttribute="leading" secondItem="eYO-wU-xSy" secondAttribute="leadingMargin" id="jpD-Gk-Izr"/>
+                            <constraint firstItem="7ED-zB-xM2" firstAttribute="centerX" secondItem="eYO-wU-xSy" secondAttribute="centerX" id="nOH-uB-jjs"/>
+                            <constraint firstItem="PMI-vG-9TC" firstAttribute="top" secondItem="dtl-5g-5Vm" secondAttribute="bottom" id="t6q-mu-QS2"/>
+                            <constraint firstItem="YUE-st-Sl6" firstAttribute="centerX" secondItem="eYO-wU-xSy" secondAttribute="centerX" id="zz3-K8-xFC"/>
+                        </constraints>
+                        <connections>
+                            <action selector="backgroundTap:" destination="tor-Lh-7ry" eventType="touchDown" id="mZf-1S-t1p"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="YUE-st-Sl6" id="qfe-B0-C8Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hie-wl-B7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="580" y="-1684"/>
         </scene>
         <!--MainMenuViewController-->
         <scene sceneID="5GF-nX-laB">
@@ -657,7 +724,7 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vG2-rC-7By" id="e5u-bQ-cSK">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 54" translatesAutoresizingMaskIntoConstraints="NO" id="Cq6-Eb-Bp6">

@@ -142,7 +142,8 @@
         NSLog(@"\nResult: %@", result.description);
         
         NSString *resultValue = result[@"status"];
-        NSString *resultNickname = [result[@"nickname"] objectForKey:@"user_nickname"];
+        NSString *resultNickname = [result[@"details"] objectForKey:@"user_nickname"];
+        NSString *resultID = [result[@"details"] objectForKey:@"id"];
         //NSString *nicknameCut = [resultNickname substringFromIndex:5];
         
         if([resultValue isEqual:@"Success"]) {
@@ -158,6 +159,7 @@
                 [[NSUserDefaults standardUserDefaults]setObject:resultNickname forKey:@"Name"];
                 [[NSUserDefaults standardUserDefaults]setObject:userEmail forKey:@"Email"];
                 [[NSUserDefaults standardUserDefaults]setObject:userPassword forKey:@"Password"];
+                [[NSUserDefaults standardUserDefaults]setObject:resultID forKey:@"ID"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
 
                 [self showViewController:mainMenuViewController sender:nil];
