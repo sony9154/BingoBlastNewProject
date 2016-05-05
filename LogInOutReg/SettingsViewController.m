@@ -114,16 +114,40 @@
         _settingImageView.image = resizedImage;
         
         // Save in Photo Library
-        [self saveToPhotoLibrary:resizedImage];
+        //[self saveToPhotoLibrary:resizedImage];
+        NSURL *myUrl = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/photoReceive.php"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myUrl];
+        request.HTTPMethod = @"POST";
         
-    } else {
+        NSString *boundary = @"---------------------------14737809831466499882746641449";
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+        [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
         
+//        request.HTTPBody = [registerDataString dataUsingEncoding:NSUTF8StringEncoding];
         
+        NSMutableData *body = [NSMutableData data];
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploadedfile\"; filename=\"test.png\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        //[body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[NSData dataWithData:jpegData]];
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setHTTPBody:body];
+        
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+        //NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable jsonData, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
+        [task resume];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [picker dismissViewControllerAnimated:true completion:nil];
+        });
+        
+    
     }
-    [picker dismissViewControllerAnimated:true completion:nil];
 }
-
-- (void)saveToPhotoLibrary:(UIImage*) image {
+/*- (void)saveToPhotoLibrary:(UIImage*) image {
     
     ALAssetsLibrary *library = [ALAssetsLibrary new];
     
@@ -137,7 +161,7 @@
         
     }];
     
-}
+}*/
 
 - (UIImage*) resizeFromImage:(UIImage*) sourceImage {
     
