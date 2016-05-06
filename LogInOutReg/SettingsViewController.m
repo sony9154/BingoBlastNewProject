@@ -13,6 +13,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "EntranceViewController.h"
+#import "MusicManager.h"
 
 
 @interface SettingsViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
@@ -24,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *settingNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *settingEmailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *setttingPasswordTextField;
+@property (weak, nonatomic) IBOutlet UIView *SystemSettingView;
+@property (weak, nonatomic) IBOutlet UIView *PersonalSettingView;
 
 @end
 
@@ -44,6 +47,10 @@
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dimissKeyboard)];
     [self.view addGestureRecognizer:tapRecognizer];
+    
+    UIImage * image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
+    self.settingImageView.image = image;
+    
     
 //    self.settingNameTextField.delegate =self;
 }
@@ -113,8 +120,10 @@
         
         _settingImageView.image = resizedImage;
         
+        [userDefaults setObject:UIImagePNGRepresentation(resizedImage) forKey:@"image"];
+        [userDefaults synchronize];
         // Save in Photo Library
-        [self saveToPhotoLibrary:resizedImage];
+//        [self saveToPhotoLibrary:resizedImage];
         
     } else {
         
@@ -123,21 +132,21 @@
     [picker dismissViewControllerAnimated:true completion:nil];
 }
 
-- (void)saveToPhotoLibrary:(UIImage*) image {
-    
-    ALAssetsLibrary *library = [ALAssetsLibrary new];
-    
-    [library writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)image.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error) {
-        
-        if (error) {
-            NSLog(@"Save to PhotoLibrary Fail: %@",error.description);
-        } else {
-            NSLog(@"Image saved OK!");
-        }
-        
-    }];
-    
-}
+//- (void)saveToPhotoLibrary:(UIImage*) image {
+//    
+//    ALAssetsLibrary *library = [ALAssetsLibrary new];
+//    
+//    [library writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)image.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error) {
+//        
+//        if (error) {
+//            NSLog(@"Save to PhotoLibrary Fail: %@",error.description);
+//        } else {
+//            NSLog(@"Image saved OK!");
+//        }
+//        
+//    }];
+//    
+//}
 
 - (UIImage*) resizeFromImage:(UIImage*) sourceImage {
     
@@ -187,6 +196,22 @@
     UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     EntranceViewController * mmvc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"EntranceViewController"];
     [self presentViewController:mmvc animated:true completion:nil];
+}
+- (IBAction)personalSettingsButton:(id)sender {
+    
+    [self.view bringSubviewToFront:self.PersonalSettingView];
+    
+}
+- (IBAction)systemSettingsButton:(id)sender {
+    
+    [self.view bringSubviewToFront:self.SystemSettingView];
+    
+}
+- (IBAction)musicSwitch:(id)sender {
+    if([sender isOn])[[MusicManager shardManager].shardPlayer play];
+    else [[MusicManager shardManager].shardPlayer stop];
+}
+- (IBAction)soundSwitch:(id)sender {
 }
 
 /*

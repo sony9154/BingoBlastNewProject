@@ -20,6 +20,7 @@
 		5D9710AC1CC2C26100D71CC6 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9710AB1CC2C26100D71CC6 /* MainMenuViewController.m */; };
 		83033F371CD88A6600FFB27C /* bgm in Resources */ = {isa = PBXBuildFile; fileRef = 83033F361CD88A6600FFB27C /* bgm */; };
 		83033F391CD88A7C00FFB27C /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 83033F381CD88A7C00FFB27C /* sound */; };
+		836A62801CDB588E00B004FC /* MusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 836A627F1CDB588E00B004FC /* MusicManager.m */; };
 		838402E61CD4A2E200E484E1 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 838402E41CD4A2E200E484E1 /* 1.wav */; };
 		838402E71CD4A2E200E484E1 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 838402E51CD4A2E200E484E1 /* backgroundMusic.mp3 */; };
 		838402E91CD4A3A300E484E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838402E81CD4A3A300E484E1 /* AVFoundation.framework */; };
@@ -76,6 +77,8 @@
 		5D9710AB1CC2C26100D71CC6 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		83033F361CD88A6600FFB27C /* bgm */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bgm; path = LogInOutReg/bgm; sourceTree = "<group>"; };
 		83033F381CD88A7C00FFB27C /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = LogInOutReg/sound; sourceTree = "<group>"; };
+		836A627E1CDB588E00B004FC /* MusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicManager.h; sourceTree = "<group>"; };
+		836A627F1CDB588E00B004FC /* MusicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicManager.m; sourceTree = "<group>"; };
 		838402E41CD4A2E200E484E1 /* 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1.wav; sourceTree = "<group>"; };
 		838402E51CD4A2E200E484E1 /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
 		838402E81CD4A3A300E484E1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -179,14 +182,16 @@
 		5D80D00C1CAD5F0900F0B991 /* BingGoBlast */ = {
 			isa = PBXGroup;
 			children = (
+				5D80D0101CAD5F0900F0B991 /* AppDelegate.h */,
+				5D80D0111CAD5F0900F0B991 /* AppDelegate.m */,
 				838402E41CD4A2E200E484E1 /* 1.wav */,
 				838402E51CD4A2E200E484E1 /* backgroundMusic.mp3 */,
 				5D80D0161CAD5F0900F0B991 /* Main.storyboard */,
 				83B5C8A41CD88394009C9F8C /* game */,
-				5D80D0101CAD5F0900F0B991 /* AppDelegate.h */,
-				5D80D0111CAD5F0900F0B991 /* AppDelegate.m */,
 				956CEC901CCF3AE80039017E /* Login */,
 				956CEC831CCE93240039017E /* LeaderboardGroup */,
+				836A627E1CDB588E00B004FC /* MusicManager.h */,
+				836A627F1CDB588E00B004FC /* MusicManager.m */,
 				5D80D01B1CAD5F0900F0B991 /* LaunchScreen.storyboard */,
 				5D80D0191CAD5F0900F0B991 /* Assets.xcassets */,
 				5D80D01E1CAD5F0900F0B991 /* Info.plist */,
@@ -463,6 +468,7 @@
 				83B5C8DE1CD88692009C9F8C /* PlayMainMenuViewController.m in Sources */,
 				956CEC9C1CCF5C560039017E /* SettingsViewController.m in Sources */,
 				83B5C8E61CD88692009C9F8C /* State.m in Sources */,
+				836A62801CDB588E00B004FC /* MusicManager.m in Sources */,
 				83B5C8E21CD88692009C9F8C /* SkillButton.m in Sources */,
 				956CEC8E1CCF10BA0039017E /* HolleToPlayViewController.m in Sources */,
 				83B5C8D31CD88692009C9F8C /* AI.m in Sources */,

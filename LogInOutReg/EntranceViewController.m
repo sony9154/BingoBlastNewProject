@@ -12,11 +12,12 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "MusicManager.h"
 
 @interface EntranceViewController ()
 {
     NSUserDefaults * userDefaults;
-    AVAudioPlayer * audioPlayer;
+//    AVAudioPlayer * audioPlayer;
     FBSDKAccessToken* accessToken;
 }
 
@@ -30,7 +31,13 @@
     //Music
     NSString * musicFilePath = [[NSBundle mainBundle] pathForResource:@"backgroundMusic" ofType:@"mp3"];
     NSURL * soundFileURL = [NSURL fileURLWithPath:musicFilePath];
-    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+    
+    
+    
+    [MusicManager shardManager].shardPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+    
+    AVAudioPlayer* audioPlayer = [MusicManager shardManager].shardPlayer;
+    
     audioPlayer.numberOfLoops = -1;
     [audioPlayer play];
     
@@ -41,7 +48,8 @@
     
     NSString * clickSound = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"wav"];
     NSURL * clickSoundURL = [NSURL fileURLWithPath:clickSound];
-    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:clickSoundURL error:nil];
+    
+    AVAudioPlayer* audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:clickSoundURL error:nil];
     audioPlayer.numberOfLoops = 1;
     [audioPlayer play];
     

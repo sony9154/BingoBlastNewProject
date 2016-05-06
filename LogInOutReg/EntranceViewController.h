@@ -10,6 +10,5 @@
 
 @interface EntranceViewController : UIViewController
 
-
 @end
 
