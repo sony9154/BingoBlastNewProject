@@ -117,7 +117,14 @@
         //[self saveToPhotoLibrary:resizedImage];
         NSURL *myUrl = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/photoReceive.php"];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myUrl];
+        NSMutableURLRequest *request2 = [NSMutableURLRequest requestWithURL:myUrl];
         request.HTTPMethod = @"POST";
+        request2.HTTPMethod = @"POST";
+        NSString *userid = [userDefaults objectForKey:@"ID"];
+        NSString *pictureName = [userid stringByAppendingString:@".png"];
+        NSString *pictureNameString = [NSString stringWithFormat:@"profilePicture=%@&id=%@", pictureName,userid];
+        
+        request2.HTTPBody = [pictureNameString dataUsingEncoding:NSUTF8StringEncoding];
         
         NSString *boundary = @"---------------------------14737809831466499882746641449";
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
@@ -128,9 +135,9 @@
         NSMutableData *body = [NSMutableData data];
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         //[body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploadedfile\"; filename=\"test.png\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-        NSString *id = [userDefaults objectForKey:@"ID"];
-        id = [id stringByAppendingString:@".png"];
-        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploadedfile\"; filename=\"%@\"\r\n",id] dataUsingEncoding:NSUTF8StringEncoding]];
+//        NSString *pictureName = [userDefaults objectForKey:@"ID"];
+//        pictureName = [pictureName stringByAppendingString:@".png"];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploadedfile\"; filename=\"%@\"\r\n",pictureName] dataUsingEncoding:NSUTF8StringEncoding]];
         //[body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:[NSData dataWithData:jpegData]];
@@ -141,8 +148,9 @@
         NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
         //NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable jsonData, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
+        NSURLSessionDataTask *task2 = [session dataTaskWithRequest:request2];
         [task resume];
-        
+        [task2 resume];
         dispatch_async(dispatch_get_main_queue(), ^{
            [picker dismissViewControllerAnimated:true completion:nil];
         });

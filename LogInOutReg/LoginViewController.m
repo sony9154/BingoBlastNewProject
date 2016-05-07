@@ -115,10 +115,17 @@
     NSString *userEmail = self.userEmailTextField.text;
     NSString *userPassword = self.userPasswordTextField.text;
     
-    if(userEmail.length == 0 || userPassword.length == 0){return;}
+    if(userEmail.length == 0 || userPassword.length == 0)
+    {
+        [self displayMyAlertTitle:@"請輸入帳號和密碼" alertMessage:nil];
+        return;
+    }
+    if ([self validateEmail:userEmail] != true) {
+        [self displayMyAlertTitle:@"警告!" alertMessage:@"Email格式不正確!"];
+        return;
+    }
     
     NSURL *myUrl = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/userLogin.php"];
-//    NSURL *myUrl = [NSURL URLWithString:@"http://localhost:8888/userLogin.php"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myUrl];
     request.HTTPMethod = @"POST";
@@ -192,6 +199,27 @@
     
     [task resume];
 }
+
+- (BOOL) validateEmail: (NSString *) candidate {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    
+    return [emailTest evaluateWithObject:candidate];
+}
+
+- (void) displayMyAlertTitle:(NSString*)alertTitle alertMessage:(NSString*)userMessage {
+    
+    UIAlertController *myAlert = [UIAlertController alertControllerWithTitle:alertTitle message:userMessage preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [myAlert addAction:okAction];
+    
+    [self presentViewController:myAlert animated:true completion:nil];
+}
+
 
 - (IBAction)goBack:(id)sender {
     

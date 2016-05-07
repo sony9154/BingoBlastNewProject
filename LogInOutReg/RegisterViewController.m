@@ -73,7 +73,6 @@
     }
     
     NSURL *myURL = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/userRegister.php"];
-//    NSURL *myURL = [NSURL URLWithString:@"http://localhost:8888/userRegister.php"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myURL];
     request.HTTPMethod = @"POST";
