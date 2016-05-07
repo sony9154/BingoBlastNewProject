@@ -151,6 +151,7 @@
         NSString *resultValue = result[@"status"];
         NSString *resultNickname = [result[@"details"] objectForKey:@"user_nickname"];
         NSString *resultID = [result[@"details"] objectForKey:@"id"];
+        NSString *profilePicture = [result[@"details"] objectForKey:@"profile_picture"];
         //NSString *nicknameCut = [resultNickname substringFromIndex:5];
         
         if([resultValue isEqual:@"Success"]) {
@@ -167,6 +168,7 @@
                 [[NSUserDefaults standardUserDefaults]setObject:userEmail forKey:@"Email"];
                 [[NSUserDefaults standardUserDefaults]setObject:userPassword forKey:@"Password"];
                 [[NSUserDefaults standardUserDefaults]setObject:resultID forKey:@"ID"];
+                [[NSUserDefaults standardUserDefaults]setObject:profilePicture forKey:@"ProfilePicture"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
 
                 [self showViewController:mainMenuViewController sender:nil];

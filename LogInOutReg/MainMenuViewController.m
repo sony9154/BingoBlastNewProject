@@ -31,10 +31,19 @@
     
     NSLog(@"userNameLabel is : %@",self.userNameLabel.text);
     
-    UIImage *image = [UIImage imageNamed:@"123456.jpg"];
-    self.useImageView.layer.masksToBounds = true;
-    self.useImageView.layer.cornerRadius = 22.0;
-    self.useImageView.image = image;
+    NSString *profilePicture = [userDefaults objectForKey:@"ProfilePicture"];
+    if (![profilePicture isEqualToString:@""]) {
+        UIImage *image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
+        self.useImageView.layer.masksToBounds = true;
+        self.useImageView.layer.cornerRadius = 22.0;
+        self.useImageView.image = image;
+    }
+    else {
+        UIImage *image = [UIImage imageNamed:@"123456.jpg"];
+        self.useImageView.layer.masksToBounds = true;
+        self.useImageView.layer.cornerRadius = 22.0;
+        self.useImageView.image = image;
+    }
     
 }
 

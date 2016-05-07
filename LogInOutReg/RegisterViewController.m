@@ -67,7 +67,7 @@
         return;
     }
     
-    if(userPassword != userRepeatPassword) {
+    if([userPassword isEqualToString:userRepeatPassword] == NO) {
         [self displayMyAlertTitle:@"請再次確認" alertMessage:@"密碼輸入不一致！"];
         return;
     }
