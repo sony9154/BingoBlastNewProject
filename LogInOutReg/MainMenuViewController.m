@@ -28,11 +28,17 @@
     // Do any additional setup after loading the view.
     userDefaults = [NSUserDefaults standardUserDefaults];
     self.userNameLabel.text = [userDefaults objectForKey:@"Name"];
-    
     NSLog(@"userNameLabel is : %@",self.userNameLabel.text);
-    
+    NSString *fbPictureUrl = [userDefaults objectForKey:@"pictureUrl"];
     NSString *profilePicture = [userDefaults objectForKey:@"ProfilePicture"];
-    if (![profilePicture isEqualToString:@""]) {
+    
+    if ([userDefaults boolForKey:@"isFBLoggedIn"] == true) {
+        UIImage *fbImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:fbPictureUrl]]];
+        self.useImageView.layer.masksToBounds = true;
+        self.useImageView.layer.cornerRadius = 22.0;
+        self.useImageView.image = fbImage;
+    }
+    else if (![profilePicture isEqualToString:@""]) {
         UIImage *image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
         self.useImageView.layer.masksToBounds = true;
         self.useImageView.layer.cornerRadius = 22.0;

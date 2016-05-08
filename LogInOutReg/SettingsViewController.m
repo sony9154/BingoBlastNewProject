@@ -35,9 +35,13 @@
     userDefaults = [NSUserDefaults standardUserDefaults];
     self.settingNameTextField.text = [userDefaults objectForKey:@"Name"];
     self.emailLabel.text = [userDefaults objectForKey:@"Email"];
+    
     accesssToken = [FBSDKAccessToken currentAccessToken];
     if (accesssToken) {
         self.setttingPasswordTextField.text = @"";
+        UIImage *fbImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[userDefaults objectForKey:@"pictureUrl"]]]];
+        self.settingImageView.image = fbImage;
+        return;
     } else {
     self.setttingPasswordTextField.text = [userDefaults objectForKey:@"Password"];
     }
@@ -58,25 +62,37 @@
 //    self.settingNameTextField.delegate =self;
 }
 - (IBAction)updateInfoBtnPressed:(UIButton *)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"更新資料" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *update = [UIAlertAction actionWithTitle:@"確認" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-         NSString *userEmail = self.emailLabel.text;
-         NSString *userNickname = self.settingNameTextField.text;
-         NSString *userPassword = self.setttingPasswordTextField.text;
-         NSURL *myUrl = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/updateUserInfo.php"];
-         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myUrl];
-         request.HTTPMethod = @"POST";
-         NSString *updateInfoString = [NSString stringWithFormat:@"email=%@&password=%@&nickname=%@",userEmail,userPassword,userNickname];
-         request.HTTPBody = [updateInfoString dataUsingEncoding:NSUTF8StringEncoding];
-         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-         NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-         NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
-         [task resume];
-    }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:update];
-    [alert addAction:cancel];
-    [self presentViewController:alert animated:YES completion:nil];
+    
+    accesssToken = [FBSDKAccessToken currentAccessToken];
+    if(accesssToken){
+        UIAlertController *fbAlert = [UIAlertController alertControllerWithTitle:@"臉書使用者不需更新資料" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [fbAlert addAction:ok];
+        [self presentViewController:fbAlert animated:YES completion:nil];
+        return;
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"更新資料" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *update = [UIAlertAction actionWithTitle:@"確認" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *userEmail = self.emailLabel.text;
+            NSString *userNickname = self.settingNameTextField.text;
+            NSString *userPassword = self.setttingPasswordTextField.text;
+            NSURL *myUrl = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/updateUserInfo.php"];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myUrl];
+            request.HTTPMethod = @"POST";
+            NSString *updateInfoString = [NSString stringWithFormat:@"email=%@&password=%@&nickname=%@",userEmail,userPassword,userNickname];
+            request.HTTPBody = [updateInfoString dataUsingEncoding:NSUTF8StringEncoding];
+            NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+            NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+            NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
+            [task resume];
+        }];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:update];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
+    
     
 }
 
@@ -245,6 +261,7 @@
     
     //Account logout
     [userDefaults setBool:false forKey:@"isUserLoggedIn"];
+    [userDefaults setBool:false forKey:@"isFBLoggedIn"];
     [userDefaults synchronize];
     UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     EntranceViewController * mmvc = [mainStoryBoard instantiateViewControllerWithIdentifier:@"EntranceViewController"];
