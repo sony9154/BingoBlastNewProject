@@ -59,7 +59,7 @@
     if (image == nil) {
         return;
     }
-    else if (![profilePicture isEqualToString:@""]) {
+    else if ([profilePicture isEqualToString:@""]) {
         self.settingImageView.image = image;
     }
 
@@ -168,9 +168,6 @@
         [userDefaults setObject:UIImagePNGRepresentation(resizedImage) forKey:@"image"];
         [userDefaults synchronize];
 
-        [userDefaults setObject:UIImagePNGRepresentation(resizedImage) forKey:@"image"];
-        [userDefaults synchronize];
-        // Save in Photo Library
 
         //[self saveToPhotoLibrary:resizedImage];
         NSURL *myUrl = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/photoReceive.php"];
