@@ -18,6 +18,7 @@
 		5D9710A71CC2B33800D71CC6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9710A41CC2B33800D71CC6 /* FBSDKCoreKit.framework */; };
 		5D9710A81CC2B33800D71CC6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D9710A51CC2B33800D71CC6 /* FBSDKLoginKit.framework */; };
 		5D9710AC1CC2C26100D71CC6 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9710AB1CC2C26100D71CC6 /* MainMenuViewController.m */; };
+		5DFA75851CDBA3C6001FA44B /* PasswordRetriveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA75841CDBA3C6001FA44B /* PasswordRetriveViewController.m */; };
 		83033F371CD88A6600FFB27C /* bgm in Resources */ = {isa = PBXBuildFile; fileRef = 83033F361CD88A6600FFB27C /* bgm */; };
 		83033F391CD88A7C00FFB27C /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 83033F381CD88A7C00FFB27C /* sound */; };
 		836A62801CDB588E00B004FC /* MusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 836A627F1CDB588E00B004FC /* MusicManager.m */; };
@@ -74,6 +75,8 @@
 		5D9710A51CC2B33800D71CC6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		5D9710AA1CC2C26100D71CC6 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		5D9710AB1CC2C26100D71CC6 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		5DFA75831CDBA3C6001FA44B /* PasswordRetriveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordRetriveViewController.h; sourceTree = "<group>"; };
+		5DFA75841CDBA3C6001FA44B /* PasswordRetriveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordRetriveViewController.m; sourceTree = "<group>"; };
 		83033F361CD88A6600FFB27C /* bgm */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bgm; path = LogInOutReg/bgm; sourceTree = "<group>"; };
 		83033F381CD88A7C00FFB27C /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = LogInOutReg/sound; sourceTree = "<group>"; };
 		836A627E1CDB588E00B004FC /* MusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicManager.h; sourceTree = "<group>"; };
@@ -358,6 +361,8 @@
 				956CEC9B1CCF5C560039017E /* SettingsViewController.m */,
 				956CEC8C1CCF10BA0039017E /* HolleToPlayViewController.h */,
 				956CEC8D1CCF10BA0039017E /* HolleToPlayViewController.m */,
+				5DFA75831CDBA3C6001FA44B /* PasswordRetriveViewController.h */,
+				5DFA75841CDBA3C6001FA44B /* PasswordRetriveViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -393,7 +398,7 @@
 				TargetAttributes = {
 					5D80D0091CAD5F0900F0B991 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = G66UXEL2H5;
+						DevelopmentTeam = RX6S78692S;
 					};
 				};
 			};
@@ -457,6 +462,7 @@
 				5D80D0151CAD5F0900F0B991 /* EntranceViewController.m in Sources */,
 				5D80D0121CAD5F0900F0B991 /* AppDelegate.m in Sources */,
 				83B5C8D61CD88692009C9F8C /* BlockButton.m in Sources */,
+				5DFA75851CDBA3C6001FA44B /* PasswordRetriveViewController.m in Sources */,
 				5D80D00F1CAD5F0900F0B991 /* main.m in Sources */,
 				83B5C8D71CD88692009C9F8C /* Board.m in Sources */,
 				83B5C8D51CD88692009C9F8C /* Block.m in Sources */,

@@ -67,13 +67,12 @@
         return;
     }
     
-    if(userPassword != userRepeatPassword) {
+    if([userPassword isEqualToString:userRepeatPassword] == NO) {
         [self displayMyAlertTitle:@"請再次確認" alertMessage:@"密碼輸入不一致！"];
         return;
     }
     
     NSURL *myURL = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/userRegister.php"];
-//    NSURL *myURL = [NSURL URLWithString:@"http://localhost:8888/userRegister.php"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myURL];
     request.HTTPMethod = @"POST";

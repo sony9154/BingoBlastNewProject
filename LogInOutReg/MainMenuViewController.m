@@ -33,14 +33,31 @@
     [[GameCenterManager shardManager] authenticateLocalUserWith:self];
     userDefaults = [NSUserDefaults standardUserDefaults];
     self.userNameLabel.text = [userDefaults objectForKey:@"Name"];
-    
     NSLog(@"userNameLabel is : %@",self.userNameLabel.text);
-    
-    UIImage *image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
-    self.useImageView.layer.masksToBounds = true;
-    self.useImageView.layer.cornerRadius = 22.0;
-    self.useImageView.image = image;
-    
+    NSString *fbPictureUrl = [userDefaults objectForKey:@"pictureUrl"];
+    NSString *profilePicture = [userDefaults objectForKey:@"ProfilePicture"];
+
+
+    if ([userDefaults boolForKey:@"isFBLoggedIn"] == true) {
+        UIImage *fbImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:fbPictureUrl]]];
+        self.useImageView.layer.masksToBounds = true;
+        self.useImageView.layer.cornerRadius = 22.0;
+        self.useImageView.image = fbImage;
+    }
+    else if (![profilePicture isEqualToString:@""]) {
+        UIImage *image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
+        self.useImageView.layer.masksToBounds = true;
+        self.useImageView.layer.cornerRadius = 22.0;
+        self.useImageView.image = image;
+    }
+    else {
+        UIImage *image = [UIImage imageNamed:@"123456.jpg"];
+        self.useImageView.layer.masksToBounds = true;
+        self.useImageView.layer.cornerRadius = 22.0;
+        self.useImageView.image = image;
+    }
+
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,52 +73,52 @@
 }
 
 - (IBAction)settingsBtnPressed:(id)sender {
-    
+
     [self playSound];
-    
+
     SettingsViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-    
+
     vc2.settingsNickname = self.userNameLabel.text;
-    
+
     [self showViewController:vc2 sender:nil];
 }
 
 - (IBAction)settingsBtnPressed2:(id)sender {
-    
+
     [self playSound];
-    
+
     SettingsViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-    
+
     vc2.settingsNickname = self.userNameLabel.text;
-    
+
     [self showViewController:vc2 sender:nil];
 }
 - (IBAction)onlineGameButton:(id)sender {
-    
+
     [[MusicManager shardManager].shardPlayer stop];
 //    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    
+
     dispatch_async(dispatch_get_main_queue(), ^{
         MultiPlayerGameViewcontroller* mpgvc = [self.storyboard instantiateViewControllerWithIdentifier:@"MultiPlayerGameViewcontroller"];
         [[GameCenterManager shardManager] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self delegate:mpgvc gameViewController:mpgvc];
-        
+
     });
-    
+
     [self playSound];
-    
+
 }
 - (IBAction)howToPlayButton:(id)sender {
-    
+
     [self playSound];
 }
 - (IBAction)LeaderBoardButton:(id)sender {
-    
+
     [self playSound];
 }
 - (IBAction)singleGameButton:(id)sender {
-    
+
     UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"AI強度" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    
+
     UIAlertAction* easy = [UIAlertAction actionWithTitle:@"簡單" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self startSinglePlayerGameWithAIStrength:AIStrengthEasy];
     }];
@@ -115,18 +132,18 @@
         [self startSinglePlayerGameWithAIStrength:AIStrengthDynamic];
     }];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    
+
     [alertController addAction:easy];
     [alertController addAction:normal];
     [alertController addAction:hard];
     [alertController addAction:dynamic];
     [alertController addAction:cancel];
-    
+
     [self presentViewController:alertController animated:true completion:nil];
 
-    
-    
-    
+
+
+
 }
 #pragma screen access
 
@@ -138,16 +155,16 @@
     return true;
 }
 - (void) startSinglePlayerGameWithAIStrength:(AIStrengthConfig)aiStr{
-    
+
 //    UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     dispatch_async(dispatch_get_main_queue(), ^{
         SinglePlayerGameViewController* singlePlayerGameViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SinglePlayerGameViewController"];
         singlePlayerGameViewController.aiStrength  = aiStr;
         [self presentViewController:singlePlayerGameViewController animated:true completion:nil];
 
-        
+
     });
-    
+
 }
 
 /*
@@ -160,7 +177,7 @@
 }
 */
 -(void) playSound {
-    
+
     NSString * clickSound = [[NSBundle mainBundle] pathForResource:@"1" ofType:@"wav"];
     NSURL * clickSoundURL = [NSURL fileURLWithPath:clickSound];
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:clickSoundURL error:nil];
