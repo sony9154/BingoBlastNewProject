@@ -10,6 +10,9 @@
 #import "SettingsViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "MusicManager.h"
+#import "SinglePlayerGameViewController.h"
+#import "MultiPlayerGameViewcontroller.h"
+#import "GameCenterManager.h"
 
 @interface MainMenuViewController ()
 {
@@ -27,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[GameCenterManager shardManager] authenticateLocalUserWith:self];
     userDefaults = [NSUserDefaults standardUserDefaults];
     self.userNameLabel.text = [userDefaults objectForKey:@"Name"];
     
@@ -75,8 +79,16 @@
 - (IBAction)onlineGameButton:(id)sender {
     
     [[MusicManager shardManager].shardPlayer stop];
+//    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MultiPlayerGameViewcontroller* mpgvc = [self.storyboard instantiateViewControllerWithIdentifier:@"MultiPlayerGameViewcontroller"];
+        [[GameCenterManager shardManager] findMatchWithMinPlayers:2 maxPlayers:2 viewController:self delegate:mpgvc gameViewController:mpgvc];
+        
+    });
     
     [self playSound];
+    
 }
 - (IBAction)howToPlayButton:(id)sender {
     
@@ -85,6 +97,57 @@
 - (IBAction)LeaderBoardButton:(id)sender {
     
     [self playSound];
+}
+- (IBAction)singleGameButton:(id)sender {
+    
+    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"AI強度" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* easy = [UIAlertAction actionWithTitle:@"簡單" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self startSinglePlayerGameWithAIStrength:AIStrengthEasy];
+    }];
+    UIAlertAction* normal = [UIAlertAction actionWithTitle:@"普通" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self startSinglePlayerGameWithAIStrength:AIStrengthNormal];
+    }];
+    UIAlertAction* hard = [UIAlertAction actionWithTitle:@"困難" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self startSinglePlayerGameWithAIStrength:AIStrengthHard];
+    }];
+    UIAlertAction* dynamic = [UIAlertAction actionWithTitle:@"鏡中的你" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self startSinglePlayerGameWithAIStrength:AIStrengthDynamic];
+    }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:easy];
+    [alertController addAction:normal];
+    [alertController addAction:hard];
+    [alertController addAction:dynamic];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:true completion:nil];
+
+    
+    
+    
+}
+#pragma screen access
+
+-(bool) shouldAutorotate{
+    return false;
+}
+
+-(BOOL)prefersStatusBarHidden{
+    return true;
+}
+- (void) startSinglePlayerGameWithAIStrength:(AIStrengthConfig)aiStr{
+    
+//    UIStoryboard* mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SinglePlayerGameViewController* singlePlayerGameViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SinglePlayerGameViewController"];
+        singlePlayerGameViewController.aiStrength  = aiStr;
+        [self presentViewController:singlePlayerGameViewController animated:true completion:nil];
+
+        
+    });
+    
 }
 
 /*

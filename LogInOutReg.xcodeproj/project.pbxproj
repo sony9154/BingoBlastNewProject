@@ -35,7 +35,6 @@
 		83B5C8DB1CD88692009C9F8C /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8B61CD88692009C9F8C /* Line.m */; };
 		83B5C8DC1CD88692009C9F8C /* MultiPlayerGameViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8B81CD88692009C9F8C /* MultiPlayerGameViewcontroller.m */; };
 		83B5C8DD1CD88692009C9F8C /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8BA1CD88692009C9F8C /* Player.m */; };
-		83B5C8DE1CD88692009C9F8C /* PlayMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8BC1CD88692009C9F8C /* PlayMainMenuViewController.m */; };
 		83B5C8DF1CD88692009C9F8C /* SinglePlayerGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8BE1CD88692009C9F8C /* SinglePlayerGameViewController.m */; };
 		83B5C8E01CD88692009C9F8C /* Skill.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8C01CD88692009C9F8C /* Skill.m */; };
 		83B5C8E11CD88692009C9F8C /* SkillAid.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5C8C21CD88692009C9F8C /* SkillAid.m */; };
@@ -104,8 +103,6 @@
 		83B5C8B81CD88692009C9F8C /* MultiPlayerGameViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiPlayerGameViewcontroller.m; sourceTree = "<group>"; };
 		83B5C8B91CD88692009C9F8C /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		83B5C8BA1CD88692009C9F8C /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		83B5C8BB1CD88692009C9F8C /* PlayMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayMainMenuViewController.h; sourceTree = "<group>"; };
-		83B5C8BC1CD88692009C9F8C /* PlayMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayMainMenuViewController.m; sourceTree = "<group>"; };
 		83B5C8BD1CD88692009C9F8C /* SinglePlayerGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePlayerGameViewController.h; sourceTree = "<group>"; };
 		83B5C8BE1CD88692009C9F8C /* SinglePlayerGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePlayerGameViewController.m; sourceTree = "<group>"; };
 		83B5C8BF1CD88692009C9F8C /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
@@ -241,8 +238,6 @@
 				83B5C8B21CD88692009C9F8C /* GameCenterManager.m */,
 				83B5C8B31CD88692009C9F8C /* GameViewController.h */,
 				83B5C8B41CD88692009C9F8C /* GameViewController.m */,
-				83B5C8BB1CD88692009C9F8C /* PlayMainMenuViewController.h */,
-				83B5C8BC1CD88692009C9F8C /* PlayMainMenuViewController.m */,
 				83B5C8BD1CD88692009C9F8C /* SinglePlayerGameViewController.h */,
 				83B5C8BE1CD88692009C9F8C /* SinglePlayerGameViewController.m */,
 			);
@@ -465,7 +460,6 @@
 				5D80D00F1CAD5F0900F0B991 /* main.m in Sources */,
 				83B5C8D71CD88692009C9F8C /* Board.m in Sources */,
 				83B5C8D51CD88692009C9F8C /* Block.m in Sources */,
-				83B5C8DE1CD88692009C9F8C /* PlayMainMenuViewController.m in Sources */,
 				956CEC9C1CCF5C560039017E /* SettingsViewController.m in Sources */,
 				83B5C8E61CD88692009C9F8C /* State.m in Sources */,
 				836A62801CDB588E00B004FC /* MusicManager.m in Sources */,
