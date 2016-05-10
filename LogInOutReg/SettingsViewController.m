@@ -210,7 +210,7 @@
 
     }
 }
-<
+
 /*- (void)saveToPhotoLibrary:(UIImage*) image {
 
     ALAssetsLibrary *library = [ALAssetsLibrary new];
