@@ -19,6 +19,7 @@
         self.board = [[Board alloc] init];
         self.score = 0;
         self.penalty = 0;
+        self.isSurrender = false;
         [self createSkillDatas];
         [self createStateDatas];
     }

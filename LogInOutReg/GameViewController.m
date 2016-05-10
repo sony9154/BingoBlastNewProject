@@ -7,6 +7,8 @@
 //
 
 #import "GameViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface GameViewController ()
 
@@ -22,10 +24,6 @@
     
     isOver = false;
     
-    [self createClock];
-    [self.view bringSubviewToFront:scoreLabel];
-    [self.view bringSubviewToFront:opponentScoreLabel];
-    
     player = [[Player alloc] initWithName:@"tempName" Photo:@"tempPath"];
     [self createBoard];
     
@@ -34,13 +32,19 @@
 
     [self createCallNumber];
     
+    [self createClock];
+    [self.view bringSubviewToFront:scoreLabel];
+    [self.view bringSubviewToFront:opponentScoreLabel];
+    
     [self createSkills];
     [self createSkillOperatingArea];
+    [self createSkillAnimeView];
     
     [self createStates];
     
+    
+    [self loadBGMFile];
     [self playBgm];
-
 }
 
 - (void) didReceiveMemoryWarning {
@@ -50,9 +54,11 @@
 
 #pragma mark - sound,music,voice access
 
+
+- (void) loadBGMFile{
+    bgmFile = [[NSBundle mainBundle] URLForResource:@"bgm/kouchanojikan" withExtension:@"mp3"];
+}
 - (void) playBgm{
-    
-    NSURL* bgmFile = [[NSBundle mainBundle] URLForResource:@"bgm/kouchanojikan" withExtension:@"mp3"];
     bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:bgmFile error:nil];
     bgmPlayer.numberOfLoops = -1;
     [bgmPlayer play];
@@ -89,6 +95,12 @@
     clockView = [[UIView alloc] initWithFrame:clockRect];
     [self setBackgroundOfView:clockView WithImage:[UIImage imageNamed:@"timeClock"]];
     [self.view addSubview:clockView];
+
+    clockLabel = [[UILabel alloc] initWithFrame:clockView.frame];
+    [clockLabel setText:[NSString stringWithFormat:@"%lu",callNumbers.allNumbers.count]];
+    [clockLabel setFont:[UIFont fontWithName:@"Marker Felt" size:clockView.frame.size.height/2]];
+    [clockLabel sizeToFit];
+    [self.view addSubview:clockLabel];
     
 }
 
@@ -189,7 +201,7 @@
     [self updateGame];
     
     //for test
-    //[self skillSpecialEffect];
+//    [self skillSpecialEffectWithSkillID:SkillIDSeal];
     
 }
 
@@ -399,6 +411,31 @@
     
 }
 
+- (void) createSkillAnimeView{
+    
+    skillAnimeDarkView = [[UIView alloc] initWithFrame:boardView.frame];
+    [skillAnimeDarkView setBackgroundColor:[UIColor blackColor]];
+    [skillAnimeDarkView setAlpha:0.0];
+    [self.view addSubview:skillAnimeDarkView];
+    
+    skillAnimeBackgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(boardView.frame.origin.x, boardView.frame.origin.y + boardView.frame.size.height / 4.0, boardView.frame.size.width * 4, boardView.frame.size.height / 2.0)];
+    [skillAnimeBackgroundView setImage:[UIImage imageNamed:@"TestLoopAnime"]];
+    [skillAnimeBackgroundView setAlpha:0.0];
+    [self.view addSubview:skillAnimeBackgroundView];
+    
+    skillAnimeForegroundView = [[UIImageView alloc] initWithFrame:boardView.frame];
+    [skillAnimeForegroundView setImage:[UIImage imageNamed:@"Number"]];
+    [skillAnimeForegroundView setContentMode:UIViewContentModeScaleAspectFit];
+    [skillAnimeForegroundView setAlpha:0.0];
+    [self.view addSubview:skillAnimeForegroundView];
+    
+    skillAnimeLightView = [[UIView alloc] initWithFrame:boardView.frame];
+    [skillAnimeLightView setBackgroundColor:[UIColor whiteColor]];
+    [skillAnimeLightView setAlpha:0.0];
+    [self.view addSubview:skillAnimeLightView];
+    
+}
+
 - (void) skillButtonPressed:(SkillButton*)sender{
     
     for (int n = 0; n < SKILL_COUNT; n++) {
@@ -438,41 +475,120 @@
     }
     skillData.power = 0;
     
-    //[self skillSpecialEffect];
+    [self skillSpecialEffectWithSkillID:selectedSkillIndex];
     
     [self updateGame];
     
 }
 
-- (void) skillSpecialEffect{
-    NSLog(@"skillSpecialEffect");
-    isPlayingAnimation = true;
+- (void) skillSpecialEffectWithSkillID:(int)skillID{
+//    NSLog(@"skillSpecialEffect");
+//    isPlayingAnimation = true;
+    NSURL* effectSoundURL = [[NSBundle mainBundle] URLForResource:@"sound/encounting" withExtension:@"mp3"];
+    AVAudioPlayer* effectSoundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:effectSoundURL error:nil];
+    [effectSoundPlayer play];
     
     NSThread* thread = [[NSThread alloc] initWithTarget:self selector:@selector(runLoop:) object:nil];
     [thread start];
-    [self performSelector:@selector(playAnimation) onThread:thread withObject:nil waitUntilDone:false];
-    [NSThread sleepForTimeInterval:1];
+    [self performSelector:@selector(playAnimationWithID:) onThread:thread withObject:[NSNumber numberWithInt:skillID] waitUntilDone:false];
     
+    [NSThread sleepForTimeInterval:4.0];
     
 }
 
-- (void) playAnimation{
-    NSLog(@"playAnimation");
-    [UIView animateWithDuration:10 animations:^{
-        
-    }];
+- (void) playAnimationWithID:(NSNumber*)theSkillID{
     
-    isPlayingAnimation = false;
+    int skillID = [theSkillID intValue];
+    
+    //set skill image
+    switch (skillID) {
+        case SkillIDDestroy:
+            [skillAnimeBackgroundView setImage:[UIImage imageNamed:@"SkillAnimeBackground_Destroy"]];
+            [skillAnimeForegroundView setImage:[UIImage imageNamed:@"SkillAnimeForeground_Destroy"]];
+            break;
+        case SkillIDSeal:
+            [skillAnimeBackgroundView setImage:[UIImage imageNamed:@"SkillAnimeBackground_Seal"]];
+            [skillAnimeForegroundView setImage:[UIImage imageNamed:@"SkillAnimeForeground_Seal"]];
+            break;
+        case SkillIDAid:
+            [skillAnimeBackgroundView setImage:[UIImage imageNamed:@"SkillAnimeBackground_Aid"]];
+            [skillAnimeForegroundView setImage:[UIImage imageNamed:@"SkillAnimeForeground_Aid"]];
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    //background of anime
+    //    [skillAnimeBackgroundView setAlpha:1.0];
+    [skillAnimeDarkView setAlpha:0.85];
+    
+    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"position.x"];
+    
+    animation.duration = SKILL_ANIME_BACKGROUND_LOOP_INTERVAL;
+    animation.fromValue = [NSNumber numberWithFloat:0.0];
+    animation.toValue = [NSNumber numberWithFloat:skillAnimeBackgroundView.frame.size.width / 2.0];
+    animation.repeatCount = FLT_MAX;
+    [skillAnimeBackgroundView.layer addAnimation:animation forKey:@"position.x"];
+    
+    //foreground of anime
+//    [UIView animateWithDuration:SKILL_ANIME_FADE_IN_INTERVAL animations:^{
+//        
+//        [skillAnimeBackgroundView setAlpha:1.0];
+//        [skillAnimeForegroundView setAlpha:1.0];
+//        
+//    } completion:^(BOOL finished) {
+//        
+//        [UIView animateWithDuration:SKILL_ANIME_FADE_OUT_INTERVAL delay:SKILL_ANIME_INTERVAL options:nil animations:^{
+//            [skillAnimeLightView setAlpha:1.0];
+//            
+//        } completion:^(BOOL finished) {
+//            
+//            [skillAnimeBackgroundView stopAnimating];
+//            [UIView animateWithDuration:0.0 delay:0.0 options:nil animations:^{
+//                [skillAnimeDarkView setAlpha:0.0];
+//                [skillAnimeForegroundView setAlpha:0.0];
+//                [skillAnimeBackgroundView setAlpha:0.0];
+//                [skillAnimeLightView setAlpha:0.0];
+//                
+//            } completion:nil];
+//            
+//        }];
+//    }];
+    
+    
+    [UIView animateWithDuration:SKILL_ANIME_FADE_IN_INTERVAL animations:^{
+    
+        [skillAnimeBackgroundView setAlpha:1.0];
+        [skillAnimeForegroundView setAlpha:1.0];
+            
+    } completion:nil];
+    
+    [UIView animateWithDuration:SKILL_ANIME_FADE_OUT_INTERVAL delay:SKILL_ANIME_FADE_IN_INTERVAL + SKILL_ANIME_INTERVAL options:nil animations:^{
+        [skillAnimeLightView setAlpha:1.0];
+        
+    } completion:^(BOOL finished) {
+        
+        [skillAnimeBackgroundView stopAnimating];
+        [UIView animateWithDuration:0.0 delay:0.0 options:nil animations:^{
+            [skillAnimeDarkView setAlpha:0.0];
+            [skillAnimeForegroundView setAlpha:0.0];
+            [skillAnimeBackgroundView setAlpha:0.0];
+            [skillAnimeLightView setAlpha:0.0];
+            
+        } completion:nil];
+    }];
     
 }
 
 - (void) runLoop:(id)param{
-    NSLog(@"runLoop");
+//    NSLog(@"runLoop");
     @autoreleasepool {
         NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
         [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
         
-        while(isPlayingAnimation){
+        while(true){
             [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
     }
@@ -625,7 +741,11 @@
         }
             [callNumberLabel setText:callNumberString];
     }
-    
+    [self updateClock];
+}
+
+- (void)updateClock{
+    [clockLabel setText:[NSString stringWithFormat:@"%lu",callNumbers.allNumbers.count]];
 }
 
 - (void) updateSkillOperationArea{
@@ -697,6 +817,22 @@
     bgmPlayer = nil;
     blockClickedSoundPlayer = nil;
     
+    int playerScore = [player caculateScore];
+    int opponentScore = [opponent caculateScore];
+    
+    // generate result
+    if(player.isSurrender){
+        gameResult = GameResultLose;
+    }else if(opponent.isSurrender){
+        gameResult = GameResultWin;
+    }else if(playerScore > opponentScore){
+        gameResult = GameResultWin;
+    }else if(playerScore < opponentScore){
+        gameResult = GameResultLose;
+    }else if(playerScore == opponentScore){
+        gameResult = GameResultDraw;
+    }
+    
     //UIView makes buttons under it unable to be pressed,but UIImage doesn't.
     UIView* gameOverView = [[UIView alloc] initWithFrame:self.view.frame];
     [gameOverView setBackgroundColor:[UIColor blackColor]];
@@ -704,27 +840,51 @@
     
     CGRect selfViewFrame = self.view.frame;
     int lineHeight = selfViewFrame.size.height * 0.05;
-    int displayTop = (selfViewFrame.size.height - lineHeight * 3) / 2;
+    int displayTop = (selfViewFrame.size.height - lineHeight * 4) / 2;
+    
+    UILabel* resultLabel = [[UILabel alloc] init];
+    
+    switch (gameResult) {
+        case GameResultWin:
+            [resultLabel setText:@"勝利"];
+            break;
+        case GameResultLose:
+            [resultLabel setText:@"敗北"];
+            break;
+        case GameResultDraw:
+            [resultLabel setText:@"平手"];
+            break;
+        default:
+            break;
+    }
+    
+    resultLabel.font =[resultLabel.font fontWithSize:lineHeight];
+    [resultLabel setTextColor:[UIColor yellowColor]];
+    [resultLabel setShadowColor:[UIColor blackColor]];
+    [resultLabel sizeToFit];
+    
+    CGRect resultLabelFrame = CGRectMake((selfViewFrame.size.width - resultLabel.frame.size.width)/2, displayTop, resultLabel.frame.size.width, resultLabel.frame.size.height);
+    resultLabel.frame = resultLabelFrame;
     
     UILabel* finalScoreLabel = [[UILabel alloc] init];
-    [finalScoreLabel setText:[NSString stringWithFormat:@"你的分數：%i",[player caculateScore]]];
+    [finalScoreLabel setText:[NSString stringWithFormat:@"你的分數：%i",playerScore]];
     finalScoreLabel.font = [finalScoreLabel.font fontWithSize:lineHeight];
     [finalScoreLabel setTextColor:[UIColor whiteColor]];
     [finalScoreLabel setShadowColor:[UIColor blackColor]];
     [finalScoreLabel sizeToFit];
     
-    CGRect finalScoreLabelFrame = CGRectMake((selfViewFrame.size.width - finalScoreLabel.frame.size.width)/2, displayTop, finalScoreLabel.frame.size.width, finalScoreLabel.frame.size.height);
+    CGRect finalScoreLabelFrame = CGRectMake((selfViewFrame.size.width - finalScoreLabel.frame.size.width)/2, displayTop  + lineHeight, finalScoreLabel.frame.size.width, finalScoreLabel.frame.size.height);
     finalScoreLabel.frame = finalScoreLabelFrame;
     
     UILabel* finalOpponentScoreLabel = [[UILabel alloc] init];
-    [finalOpponentScoreLabel setText:[NSString stringWithFormat:@"對手的分數：%i",[opponent caculateScore]]];
+    [finalOpponentScoreLabel setText:[NSString stringWithFormat:@"對手的分數：%i",opponentScore]];
     finalOpponentScoreLabel.font = [finalOpponentScoreLabel.font fontWithSize:lineHeight];
     [finalOpponentScoreLabel setTextColor:[UIColor whiteColor]];
     [finalOpponentScoreLabel setShadowColor:[UIColor blackColor]];
     [finalOpponentScoreLabel sizeToFit];
 
     
-    CGRect finalOpponentScoreLabelFrame = CGRectMake((selfViewFrame.size.width - finalOpponentScoreLabel.frame.size.width)/2, displayTop + lineHeight, finalOpponentScoreLabel.frame.size.width , finalOpponentScoreLabel.frame.size.height);
+    CGRect finalOpponentScoreLabelFrame = CGRectMake((selfViewFrame.size.width - finalOpponentScoreLabel.frame.size.width)/2, displayTop + lineHeight * 2, finalOpponentScoreLabel.frame.size.width , finalOpponentScoreLabel.frame.size.height);
     finalOpponentScoreLabel.frame = finalOpponentScoreLabelFrame;
     
     //button used to back to menu
@@ -735,9 +895,10 @@
     [backButton sizeToFit];
     [backButton addTarget:self action:@selector(backToMenu:) forControlEvents:UIControlEventTouchUpInside];
     
-    backButton.frame = CGRectMake((selfViewFrame.size.width - backButton.frame.size.width)/2, displayTop + lineHeight * 2, backButton.frame.size.width, backButton.frame.size.height);
+    backButton.frame = CGRectMake((selfViewFrame.size.width - backButton.frame.size.width)/2, displayTop + lineHeight * 3, backButton.frame.size.width, backButton.frame.size.height);
     
     [self.view addSubview:gameOverView];
+    [self.view addSubview:resultLabel];
     [self.view addSubview:finalScoreLabel];
     [self.view addSubview:finalOpponentScoreLabel];
     [self.view addSubview:backButton];
@@ -747,6 +908,27 @@
 - (void) backToMenu:(id)sender{
     [self dismissViewControllerAnimated:true completion:nil];
 }
+
+- (IBAction)surrender:(id)sender {
+    
+    player.isSurrender = true;
+    
+    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"投降" message:@"你確定要投降嗎" preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"投降" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        [self dismissViewControllerAnimated:true completion:nil];
+        [self gameOver];
+    }];
+    
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:ok];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:true completion:nil];
+    
+}
+
 
 #pragma mark - screen access
 
@@ -819,5 +1001,7 @@
     return resultImage;
     
 }
+
+
 
 @end

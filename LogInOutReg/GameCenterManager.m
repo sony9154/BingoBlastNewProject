@@ -81,7 +81,7 @@ static GameCenterManager* shardManager;
     _presentingViewController = viewController;
     _delegate = theDelegate;
     _gameViewController = gameViewController;
-    [_presentingViewController dismissViewControllerAnimated:true completion:nil];
+//    [_presentingViewController dismissViewControllerAnimated:true completion:nil];
     
     GKMatchRequest* request = [[GKMatchRequest alloc] init];
     request.minPlayers = minPlayers;

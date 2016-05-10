@@ -1170,10 +1170,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bgm：紅茶の時間 作曲者：甘茶 甘茶の音楽工房 " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDr-GS-gou">
-                                <rect key="frame" x="295" y="570" width="305" height="30"/>
+                                <rect key="frame" x="0.0" y="570" width="600" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="1Z3-pm-M6A"/>
-                                    <constraint firstAttribute="width" constant="305" id="oSo-4d-WqR"/>
+                                    <constraint firstAttribute="height" constant="30" id="5Pm-KZ-fDK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.82970753210000003" green="0.82970753210000003" blue="0.82970753210000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -1186,6 +1185,9 @@
                                     <constraint firstAttribute="width" constant="58" id="rza-p7-tWU"/>
                                 </constraints>
                                 <state key="normal" image="ExitButton"/>
+                                <connections>
+                                    <action selector="surrender:" destination="LmQ-2w-44J" eventType="touchUpInside" id="lWS-5e-zcP"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="opponent:0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aW-NM-vI8">
                                 <rect key="frame" x="215" y="29" width="171" height="21"/>
@@ -1211,13 +1213,14 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5aW-NM-vI8" firstAttribute="top" secondItem="EFY-0K-McP" secondAttribute="bottom" constant="8" id="3Ry-0C-oXT"/>
-                            <constraint firstItem="7II-CT-3po" firstAttribute="top" secondItem="xDr-GS-gou" secondAttribute="bottom" id="4Tm-Ra-58k"/>
                             <constraint firstItem="EFY-0K-McP" firstAttribute="centerX" secondItem="qrI-Bx-o8N" secondAttribute="centerX" id="4gM-pz-xS0"/>
+                            <constraint firstItem="7II-CT-3po" firstAttribute="top" secondItem="xDr-GS-gou" secondAttribute="bottom" id="Bjo-S6-w3F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vvj-tp-LSV" secondAttribute="trailing" constant="-22" id="EE0-ua-s0K"/>
                             <constraint firstItem="EFY-0K-McP" firstAttribute="top" secondItem="mAQ-xq-BeL" secondAttribute="bottom" id="NqB-7m-Ebf"/>
                             <constraint firstItem="Vvj-tp-LSV" firstAttribute="top" secondItem="qrI-Bx-o8N" secondAttribute="topMargin" constant="-3" id="XO4-wk-3FE"/>
-                            <constraint firstAttribute="trailing" secondItem="xDr-GS-gou" secondAttribute="trailing" id="fHc-Ye-Yue"/>
+                            <constraint firstAttribute="trailing" secondItem="xDr-GS-gou" secondAttribute="trailing" id="kKg-5H-NCv"/>
                             <constraint firstItem="uPv-Fk-4Ds" firstAttribute="top" secondItem="mAQ-xq-BeL" secondAttribute="bottom" id="ksP-cX-GK6"/>
+                            <constraint firstItem="xDr-GS-gou" firstAttribute="leading" secondItem="qrI-Bx-o8N" secondAttribute="leading" id="m1e-8r-J5v"/>
                             <constraint firstItem="Vvj-tp-LSV" firstAttribute="leading" secondItem="uPv-Fk-4Ds" secondAttribute="trailing" constant="8" id="qje-nR-3GN"/>
                             <constraint firstItem="5aW-NM-vI8" firstAttribute="centerX" secondItem="EFY-0K-McP" secondAttribute="centerX" id="zRs-aG-KJ7"/>
                         </constraints>
@@ -1273,6 +1276,9 @@
                                     <constraint firstAttribute="width" constant="58" id="VRC-po-V37"/>
                                 </constraints>
                                 <state key="normal" image="ExitButton"/>
+                                <connections>
+                                    <action selector="surrender:" destination="kkB-kN-OSA" eventType="touchUpInside" id="NpG-sK-xuN"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="opponent:0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrc-cB-r0V">
                                 <rect key="frame" x="215" y="29" width="171" height="21"/>
@@ -1324,7 +1330,7 @@
     <resources>
         <image name="123456.jpg" width="960" height="1280"/>
         <image name="Arrow" width="22" height="16"/>
-        <image name="Combined Shape" width="300" height="50"/>
+        <image name="Combined Shape" width="290" height="65"/>
         <image name="ExitButton" width="55" height="46"/>
         <image name="HOWTOPLAY" width="170" height="60"/>
         <image name="How to playTitle" width="196" height="22"/>

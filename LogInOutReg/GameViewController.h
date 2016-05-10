@@ -26,9 +26,23 @@
 #define CALL_NUMBER_TIME_INTERVAL 3 //unit is second. 3 may be used.
 #define STATE_ACCESS_INTERVAL 1 //unit is second
 
+#define SKILL_ANIME_FADE_IN_INTERVAL 1
+#define SKILL_ANIME_FADE_OUT_INTERVAL 1
+#define SKILL_ANIME_INTERVAL 2
+#define SKILL_ANIME_BACKGROUND_LOOP_INTERVAL 1
+
+typedef enum GameResultType{
+    
+    GameResultWin,
+    GameResultLose,
+    GameResultDraw
+    
+}GameResultType;
+
 @interface GameViewController : UIViewController
 {
     UIView* clockView;
+    UILabel* clockLabel;
     
     //    Board* board;
     Player* player;
@@ -36,6 +50,8 @@
     BlockButton* blockButtons[LINE_LENGTH][LINE_LENGTH];
     UIImageView* drawBoardView;//used to draw line...
     __weak IBOutlet UILabel *scoreLabel;
+//    BOOL isWin;
+    GameResultType gameResult;
     
     Player* opponent;
     UIView* opponentBoardView;
@@ -52,10 +68,18 @@
     NSMutableArray<SkillButton*>* skillButtons;
 //    NSMutableArray* skillSelectButtons;
     BOOL isPlayingAnimation;
+//    UIView* skillAnimeView;
+    UIView* skillAnimeDarkView;
+    UIImageView* skillAnimeBackgroundView;
+    UIImageView* skillAnimeForegroundView;
+    UIView* skillAnimeLightView;
     
     NSTimer* stateAccessTimer;
     NSMutableArray<State*>* states;
     
+    
+    
+    NSURL* bgmFile;
     AVAudioPlayer* bgmPlayer;
     __weak IBOutlet UILabel *bgmAuthor;
     //    __weak IBOutlet UILabel *bgmAuthorWeb;
@@ -64,6 +88,8 @@
     
     BOOL isOver;
 }
+
+- (void) loadBGMFile;
 
 - (void) blockPressed:(BlockButton*)sender;
 - (void) drawOpponentBoard;
@@ -78,11 +104,14 @@
 
 - (void) updateScore;
 - (void) updateCallNumbers;
+- (void) updateClock;
 - (void) updateSkillOperationArea;
 - (void) updateGame;
 
-- (void) backToMenu:(id)sender;
 - (void) gameOver;
+- (void) backToMenu:(id)sender;
+- (IBAction)surrender:(id)sender;
+
 
 @end
 
