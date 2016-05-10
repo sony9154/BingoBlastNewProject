@@ -230,16 +230,16 @@
 		83B5C8EE1CD88724009C9F8C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				83B5C8BB1CD88692009C9F8C /* PlayMainMenuViewController.h */,
+				83B5C8BC1CD88692009C9F8C /* PlayMainMenuViewController.m */,
+				83B5C8B31CD88692009C9F8C /* GameViewController.h */,
+				83B5C8B41CD88692009C9F8C /* GameViewController.m */,
+				83B5C8BD1CD88692009C9F8C /* SinglePlayerGameViewController.h */,
+				83B5C8BE1CD88692009C9F8C /* SinglePlayerGameViewController.m */,
 				83B5C8B71CD88692009C9F8C /* MultiPlayerGameViewcontroller.h */,
 				83B5C8B81CD88692009C9F8C /* MultiPlayerGameViewcontroller.m */,
 				83B5C8B11CD88692009C9F8C /* GameCenterManager.h */,
 				83B5C8B21CD88692009C9F8C /* GameCenterManager.m */,
-				83B5C8B31CD88692009C9F8C /* GameViewController.h */,
-				83B5C8B41CD88692009C9F8C /* GameViewController.m */,
-				83B5C8BB1CD88692009C9F8C /* PlayMainMenuViewController.h */,
-				83B5C8BC1CD88692009C9F8C /* PlayMainMenuViewController.m */,
-				83B5C8BD1CD88692009C9F8C /* SinglePlayerGameViewController.h */,
-				83B5C8BE1CD88692009C9F8C /* SinglePlayerGameViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -393,7 +393,7 @@
 				TargetAttributes = {
 					5D80D0091CAD5F0900F0B991 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = G66UXEL2H5;
+						DevelopmentTeam = R4B734GJZG;
 					};
 				};
 			};
@@ -600,7 +600,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhengWei-Li.LogInOutReg";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WHITEer.HelloBingo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -621,7 +621,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhengWei-Li.LogInOutReg";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WHITEer.HelloBingo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "arm64 armv7 armv7s";

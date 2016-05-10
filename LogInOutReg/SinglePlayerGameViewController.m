@@ -29,6 +29,37 @@
     // Dispose of any resources that can be recreated.}
 }
 
+
+#pragma mark - sound,music,voice access
+
+- (void) loadBGMFile{
+    
+    bgmFile = [[NSBundle mainBundle] URLForResource:@"bgm/kouchanojikan" withExtension:@"mp3"];
+    switch (self.aiStrength) {
+        case AIStrengthEasy:
+            bgmFile = [[NSBundle mainBundle] URLForResource:@"bgm/kouchanojikan" withExtension:@"mp3"];
+            [bgmAuthor setText:@"bgm：紅茶の時間 作曲者：甘茶 甘茶の音楽工房"];
+            break;
+        case AIStrengthNormal:
+            bgmFile = [[NSBundle mainBundle] URLForResource:@"bgm/cyrf_ground_operations" withExtension:@"mp3"];
+            [bgmAuthor setText:@"bgm：地上作戦 作曲者：Cyber-Rainforce"];
+            break;
+        case AIStrengthHard:
+            bgmFile = [[NSBundle mainBundle] URLForResource:@"bgm/Final-Battle01" withExtension:@"mp3"];
+            [bgmAuthor setText:@"最後の闘い揺るぎなき想い胸にWingless Seraph"];
+            break;
+        case AIStrengthDynamic:
+            bgmFile = [[NSBundle mainBundle] URLForResource:@"bgm/cyrf_mp3_glitch" withExtension:@"mp3"];
+            [bgmAuthor setText:@"bgm：バグ 作曲者:Cyber-Rainforce"];
+            break;
+        
+            
+        default:
+            break;
+    }
+    
+}
+
 #pragma mark - AI access
 
 - (void) createAI{

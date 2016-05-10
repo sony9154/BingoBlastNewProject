@@ -34,6 +34,13 @@ typedef enum SendDataType{
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - sound,music,voice access
+
+- (void)loadBGMFile{
+    bgmFile = [[NSBundle mainBundle] URLForResource:@"bgm/Battle-resolution" withExtension:@"mp3"];
+    [bgmAuthor setText:@"覚悟ができたら掛かってきな!Wingless Seraph"];
+}
+
 #pragma mark - player's board access
 - (void)blockPressed:(BlockButton *)sender{
     Block* block = [player.board getBlockX:sender.x Y:sender.y];
@@ -75,11 +82,17 @@ typedef enum SendDataType{
 }
 
 - (void) callNewNumber{
+    if(callNumbers.allNumbers.count > 0){
+        [self sendCalledNumber:[callNumbers getNumber:0]];
+    }
     [super callNewNumber];
-    [self sendCalledNumber:[callNumbers getNumber:0]];
     if([callNumbers isNoNumber]){
         [self sendDataGameOver];
     }
+}
+
+- (void) updateClock{
+    if(self.isHost)[clockLabel setText:[NSString stringWithFormat:@"%lu",callNumbers.allNumbers.count]];
 }
 
 #pragma mark - skill access
@@ -100,6 +113,16 @@ typedef enum SendDataType{
     
     if(selectedSkillIndex == -1)return;
     [self sendSkillUsedWithSkillID:selectedSkillIndex];
+    
+}
+
+
+#pragma mark - game over access
+
+- (IBAction)surrender:(id)sender{
+    
+    [super surrender:sender];
+    [self sendDataGameOver];
     
 }
 
@@ -130,12 +153,16 @@ typedef enum SendDataType{
         case SendDataCallNumber:
             [callNumbers turnNumbersWithNewNumber:[dataDic[@"content"] intValue]];
             [self updateCallNumbers];
+            int remainNumbersCount = [clockLabel.text intValue] - 1;
+            [clockLabel setText:[NSString stringWithFormat:@"%i",remainNumbersCount]];
             break;
         case SendDataSkillUsed:
             [self opponentSkillUsedWith:dataDic[@"content"]];
             break;
         case SendDataGameOver:
+            opponent.isSurrender = [dataDic[@"content"] boolValue];
             [self gameOver];
+            break;
             
         default:
             break;
@@ -207,6 +234,7 @@ typedef enum SendDataType{
         case SkillIDAid:
             
             stateData.remainTime = STATE_AID_DURATION;
+            break;
             
         default:
             break;
@@ -292,7 +320,8 @@ typedef enum SendDataType{
 
 - (void) sendDataGameOver{
     
-    NSDictionary* dataDic = @{@"type":[NSNumber numberWithInt:SendDataGameOver],@"content":@"Game Over!"};
+    // Send gameover message. Content is if player surrender.
+    NSDictionary* dataDic = @{@"type":[NSNumber numberWithInt:SendDataGameOver],@"content":[NSNumber numberWithBool:player.isSurrender]};
     
     NSData* data = [NSKeyedArchiver archivedDataWithRootObject:dataDic];
     [self sendData:data];

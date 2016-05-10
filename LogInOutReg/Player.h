@@ -21,6 +21,7 @@
 @property Board* board;
 @property int score;
 @property int penalty;
+@property BOOL isSurrender;
 //@property BOOL isSeal;
 //@property BOOL isAid;
 //@property NSMutableArray* skills;
