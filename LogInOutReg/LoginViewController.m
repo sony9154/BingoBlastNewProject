@@ -53,7 +53,10 @@
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:demandInfo]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-     
+         
+         NSLog(@"Result = %@",result);
+         
+         NSString *fbID = (NSString*)result[@"id"];
          NSString *userEmail = (NSString*)result[@"email"];
          NSString *userNickname = (NSString*)result[@"name"];
          NSDictionary *picture = result[@"picture"];
@@ -66,7 +69,8 @@
          NSURL *myURL = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/facebookLogin.php"];
          NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myURL];
          request.HTTPMethod = @"POST";
-         NSString *registerDataString = [NSString stringWithFormat:@"email=%@&nickname=%@", userEmail, userNickname];
+         //NSString *registerDataString = [NSString stringWithFormat:@"email=%@&nickname=%@", userEmail, userNickname];
+         NSString *registerDataString = [NSString stringWithFormat:@"email=%@&nickname=%@&fbID=%@", userEmail, userNickname,fbID];
          request.HTTPBody = [registerDataString dataUsingEncoding:NSUTF8StringEncoding];
          NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
          NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
