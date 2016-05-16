@@ -20,6 +20,7 @@
     // Override point for customization after application launch.
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
+    sleep(1);
     return YES;
 }
 

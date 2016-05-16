@@ -8,6 +8,7 @@
 
 #import "GameViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MusicManager.h"
 
 
 @interface GameViewController ()
@@ -59,6 +60,10 @@
     bgmFile = [[NSBundle mainBundle] URLForResource:@"bgm/kouchanojikan" withExtension:@"mp3"];
 }
 - (void) playBgm{
+    
+    //stop original music
+    [[MusicManager shardManager].shardPlayer stop];
+    
     bgmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:bgmFile error:nil];
     bgmPlayer.numberOfLoops = -1;
     [bgmPlayer play];
