@@ -80,7 +80,7 @@
         self.useImageView.layer.cornerRadius = 22.0;
         self.useImageView.image = fbImage;
     }
-    else if ([profilePicture isEqualToString:@""]) {
+    else if (![profilePicture isEqualToString:@""]) {
         UIImage *image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
         self.useImageView.layer.masksToBounds = true;
         self.useImageView.layer.cornerRadius = 22.0;

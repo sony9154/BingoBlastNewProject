@@ -61,7 +61,7 @@
     if (image == nil) {
         return;
     }
-    else if ([profilePicture isEqualToString:@""]) {
+    else if (![profilePicture isEqualToString:@""]) {
         self.settingImageView.image = image;
     }
 

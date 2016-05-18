@@ -53,9 +53,10 @@
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:demandInfo]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-     
+         FBSDKAccessToken* accessToken = [FBSDKAccessToken currentAccessToken];
          NSString *userEmail = (NSString*)result[@"email"];
          NSString *userNickname = (NSString*)result[@"name"];
+         NSString *facebookID = (NSString*)result[@"id"];
          NSDictionary *picture = result[@"picture"];
          NSDictionary *data = picture[@"data"];
          NSString *fbProfilePictureURL = data[@"url"];
@@ -66,7 +67,7 @@
          NSURL *myURL = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/facebookLogin.php"];
          NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:myURL];
          request.HTTPMethod = @"POST";
-         NSString *registerDataString = [NSString stringWithFormat:@"email=%@&nickname=%@", userEmail, userNickname];
+         NSString *registerDataString = [NSString stringWithFormat:@"email=%@&nickname=%@&fbID=%@", userEmail, userNickname,facebookID];
          request.HTTPBody = [registerDataString dataUsingEncoding:NSUTF8StringEncoding];
          NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
          NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
@@ -81,7 +82,7 @@
                  if (!error) {
                      mainMenuViewController.successNickname = (NSString*)result[@"name"];
                  }
-                 FBSDKAccessToken* accessToken = [FBSDKAccessToken currentAccessToken];
+                 //FBSDKAccessToken* accessToken = [FBSDKAccessToken currentAccessToken];
                  [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"isFBLoggedIn"];
                  [[NSUserDefaults standardUserDefaults]synchronize];
                  if (accessToken) {
@@ -90,8 +91,9 @@
              });
          
          }];
-         
-         [task resume];
+         if (accessToken) {
+            [task resume];
+         };
     }];
     
 }
