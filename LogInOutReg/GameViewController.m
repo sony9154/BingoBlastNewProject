@@ -10,7 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MusicManager.h"
 
-
 @interface GameViewController ()
 
 @end
@@ -224,6 +223,30 @@
     int block_width = boardInsideRect.size.width/LINE_LENGTH;
     int block_height = boardInsideRect.size.height/LINE_LENGTH;
     
+    if(player.stateDatas[SkillIDAid].isRemain){
+        
+        int remainTime = player.stateDatas[SkillIDAid].remainTime;
+        int totalTime = STATE_AID_DURATION;
+        
+        //draw border
+        CGContextSetRGBFillColor(UIGraphicsGetCurrentContext(), 1, 1, 0, 1.0f);
+        CGContextFillRect(UIGraphicsGetCurrentContext(), boardView.bounds);
+        CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeClear);
+        CGContextSetRGBFillColor(UIGraphicsGetCurrentContext(), 0, 0, 0, 1.0f);
+        CGContextFillRect(UIGraphicsGetCurrentContext(), boardInsideRect);
+        
+        //draw shape to clip the border
+        CGPoint points[3];
+        points[0] = CGPointMake(0.0, 0.0);
+        points[1] = CGPointMake(boardViewFrame.size.width * 2 * (totalTime-remainTime)/totalTime, 0.0);
+        points[2] = CGPointMake(0.0, boardViewFrame.size.height * 2 * (totalTime-remainTime)/totalTime);
+        
+        CGContextAddLines(UIGraphicsGetCurrentContext(), points, 3);
+        CGContextClosePath(UIGraphicsGetCurrentContext());
+        CGContextFillPath(UIGraphicsGetCurrentContext());
+        
+    }
+    
     for(int n = 0; n < lines.count; n++){
         
         CGFloat start_x = block_width/2 + ((Line*)[lines objectAtIndex:n]).startPoint.x * block_width;
@@ -338,7 +361,11 @@
             [self setBackgroundOfView:callNumberLabel WithImageNamed:@"CurrentNumber"];
             NSString* callNumberString = [NSString stringWithFormat:@"%i",[callNumbers getNumber:n]];
             [callNumberLabel setText:callNumberString];
+            
         }//        [callNumberLabel setBackgroundColor:[UIColor yellowColor]];
+        [callNumberLabel setFont:[UIFont fontWithName:@"Avenir Next Condensed" size:30]];
+//        callNumberLabel.shadowColor = [UIColor whiteColor];
+//        callNumberLabel.shadowOffset = CGSizeMake(-2.0, -2.0);
         callNumberLabel.textAlignment = NSTextAlignmentCenter;
         [callNumberView addSubview:callNumberLabel];
     }
@@ -749,7 +776,7 @@
     [self updateClock];
 }
 
-- (void)updateClock{
+- (void) updateClock{
     [clockLabel setText:[NSString stringWithFormat:@"%lu",callNumbers.allNumbers.count]];
 }
 

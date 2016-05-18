@@ -119,6 +119,33 @@ typedef enum SendDataType{
 
 #pragma mark - game over access
 
+-(void)gameOver{
+    [super gameOver];
+    
+    if(gameResult == GameResultWin){
+        
+        NSURL* url = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/increaseVictory.php"];
+        
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+        
+        NSString* email = [[NSUserDefaults standardUserDefaults]objectForKey:@"Email"];
+        
+        request.HTTPMethod = @"POST";
+        NSString* dataString = [NSString stringWithFormat:@"email=%@",email];
+        
+        request.HTTPBody = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
+        NSURLSessionDataTask* task = [session dataTaskWithRequest:request];
+        //
+        [task resume];
+        
+        
+    }
+    
+}
+
 - (IBAction)surrender:(id)sender{
     
     [super surrender:sender];
