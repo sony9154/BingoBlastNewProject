@@ -28,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *setttingPasswordTextField;
 @property (weak, nonatomic) IBOutlet UIView *SystemSettingView;
 @property (weak, nonatomic) IBOutlet UIView *PersonalSettingView;
+@property (weak, nonatomic) IBOutlet UIImageView *systemTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *personalSettingTitle;
 
 @end
 
@@ -38,7 +40,7 @@
     // Do any additional setup after loading the view.
     userDefaults = [NSUserDefaults standardUserDefaults];
     self.settingNameTextField.text = [userDefaults objectForKey:@"Name"];
-    self.emailLabel.text = [userDefaults objectForKey:@"Email"];
+    self.settingEmailTextField.text = [userDefaults objectForKey:@"Email"];
 
     accesssToken = [FBSDKAccessToken currentAccessToken];
     if (accesssToken) {
@@ -59,7 +61,7 @@
     if (image == nil) {
         return;
     }
-    else if (![profilePicture isEqualToString:@""]) {
+    else if ([profilePicture isEqualToString:@""]) {
         self.settingImageView.image = image;
     }
 
@@ -168,9 +170,6 @@
         [userDefaults setObject:UIImagePNGRepresentation(resizedImage) forKey:@"image"];
         [userDefaults synchronize];
 
-        [userDefaults setObject:UIImagePNGRepresentation(resizedImage) forKey:@"image"];
-        [userDefaults synchronize];
-        // Save in Photo Library
 
         //[self saveToPhotoLibrary:resizedImage];
         NSURL *myUrl = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/photoReceive.php"];
@@ -281,12 +280,13 @@
 - (IBAction)personalSettingsButton:(id)sender {
 
     [self.view bringSubviewToFront:self.PersonalSettingView];
+    [self.view bringSubviewToFront:self.personalSettingTitle];
 
 }
 - (IBAction)systemSettingsButton:(id)sender {
 
     [self.view bringSubviewToFront:self.SystemSettingView];
-
+    [self.view bringSubviewToFront:self.systemTitle];
 }
 - (IBAction)musicSwitch:(id)sender {
     if([sender isOn])[[MusicManager shardManager].shardPlayer play];
