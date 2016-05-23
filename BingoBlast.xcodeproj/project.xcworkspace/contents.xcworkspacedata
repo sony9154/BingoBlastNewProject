@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:LogInOutReg.xcodeproj">
+      location = "self:/Users/lizhengwei/Downloads/LoginRegistationMysql/BingoBlast.xcodeproj">
    </FileRef>
 </Workspace>

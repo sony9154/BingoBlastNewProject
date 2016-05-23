@@ -14,7 +14,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "EntranceViewController.h"
 #import "MusicManager.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface SettingsViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 {
@@ -30,6 +30,9 @@
 @property (weak, nonatomic) IBOutlet UIView *PersonalSettingView;
 @property (weak, nonatomic) IBOutlet UIImageView *systemTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *personalSettingTitle;
+@property (weak, nonatomic) IBOutlet UIButton *UpdateInfoButton;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UIButton *systemLogOutButton;
 
 @end
 
@@ -64,11 +67,24 @@
     else if ([profilePicture isEqualToString:@""]) {
         self.settingImageView.image = image;
     }
-
-
-//    self.settingNameTextField.delegate =self;
+    
 }
-- (IBAction)updateInfoBtnPressed:(UIButton *)sender {
+-(void)viewDidAppear:(BOOL)animated
+{
+    [[self.UpdateInfoButton layer] setBorderWidth:2.0f];
+    [[self.UpdateInfoButton layer] setBorderColor:[UIColor blackColor].CGColor];
+    self.UpdateInfoButton.layer.cornerRadius = 10.0;
+    [[self.logoutButton layer] setBorderWidth:2.0f];
+    [[self.logoutButton layer] setBorderColor:[UIColor blackColor].CGColor];
+    self.logoutButton.layer.cornerRadius = 10.0;
+    self.systemLogOutButton.layer.borderColor = [UIColor blackColor].CGColor;
+    self.systemLogOutButton.layer.borderWidth = 2.0f;
+    self.systemLogOutButton.layer.cornerRadius = 10.0;
+    
+    
+    
+}- (IBAction)updateInfoBtnPressed:(UIButton *)sender {
+    
 
     accesssToken = [FBSDKAccessToken currentAccessToken];
     if(accesssToken){

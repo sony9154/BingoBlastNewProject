@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5D80D0091CAD5F0900F0B991"
-               BuildableName = "LogInOutReg.app"
-               BlueprintName = "LogInOutReg"
-               ReferencedContainer = "container:LogInOutReg.xcodeproj">
+               BuildableName = "BingoBlast.app"
+               BlueprintName = "BingoBlast"
+               ReferencedContainer = "container:BingoBlast.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5D80D0091CAD5F0900F0B991"
-            BuildableName = "LogInOutReg.app"
-            BlueprintName = "LogInOutReg"
-            ReferencedContainer = "container:LogInOutReg.xcodeproj">
+            BuildableName = "BingoBlast.app"
+            BlueprintName = "BingoBlast"
+            ReferencedContainer = "container:BingoBlast.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5D80D0091CAD5F0900F0B991"
-            BuildableName = "LogInOutReg.app"
-            BlueprintName = "LogInOutReg"
-            ReferencedContainer = "container:LogInOutReg.xcodeproj">
+            BuildableName = "BingoBlast.app"
+            BlueprintName = "BingoBlast"
+            ReferencedContainer = "container:BingoBlast.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5D80D0091CAD5F0900F0B991"
-            BuildableName = "LogInOutReg.app"
-            BlueprintName = "LogInOutReg"
-            ReferencedContainer = "container:LogInOutReg.xcodeproj">
+            BuildableName = "BingoBlast.app"
+            BlueprintName = "BingoBlast"
+            ReferencedContainer = "container:BingoBlast.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

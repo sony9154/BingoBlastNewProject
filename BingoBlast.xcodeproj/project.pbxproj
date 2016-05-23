@@ -57,7 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5D80D00A1CAD5F0900F0B991 /* LogInOutReg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogInOutReg.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D80D00A1CAD5F0900F0B991 /* BingoBlast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BingoBlast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D80D00E1CAD5F0900F0B991 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D80D0101CAD5F0900F0B991 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5D80D0111CAD5F0900F0B991 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		5D80D00B1CAD5F0900F0B991 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5D80D00A1CAD5F0900F0B991 /* LogInOutReg.app */,
+				5D80D00A1CAD5F0900F0B991 /* BingoBlast.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -370,9 +370,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5D80D0091CAD5F0900F0B991 /* LogInOutReg */ = {
+		5D80D0091CAD5F0900F0B991 /* BingoBlast */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5D80D0211CAD5F0900F0B991 /* Build configuration list for PBXNativeTarget "LogInOutReg" */;
+			buildConfigurationList = 5D80D0211CAD5F0900F0B991 /* Build configuration list for PBXNativeTarget "BingoBlast" */;
 			buildPhases = (
 				5D80D0061CAD5F0900F0B991 /* Sources */,
 				5D80D0071CAD5F0900F0B991 /* Frameworks */,
@@ -382,9 +382,9 @@
 			);
 			dependencies = (
 			);
-			name = LogInOutReg;
+			name = BingoBlast;
 			productName = LogInOutReg;
-			productReference = 5D80D00A1CAD5F0900F0B991 /* LogInOutReg.app */;
+			productReference = 5D80D00A1CAD5F0900F0B991 /* BingoBlast.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -398,11 +398,11 @@
 				TargetAttributes = {
 					5D80D0091CAD5F0900F0B991 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = R4B734GJZG;
+						DevelopmentTeam = G66UXEL2H5;
 					};
 				};
 			};
-			buildConfigurationList = 5D80D0051CAD5F0900F0B991 /* Build configuration list for PBXProject "LogInOutReg" */;
+			buildConfigurationList = 5D80D0051CAD5F0900F0B991 /* Build configuration list for PBXProject "BingoBlast" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -415,7 +415,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5D80D0091CAD5F0900F0B991 /* LogInOutReg */,
+				5D80D0091CAD5F0900F0B991 /* BingoBlast */,
 			);
 		};
 /* End PBXProject section */
@@ -603,12 +603,13 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LogInOutReg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.WHITEer.HelloBingo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhengWei-Li.BingoBlast";
+				PRODUCT_NAME = BingoBlast;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -624,12 +625,13 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LogInOutReg/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.WHITEer.HelloBingo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ZhengWei-Li.BingoBlast";
+				PRODUCT_NAME = BingoBlast;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
@@ -637,7 +639,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5D80D0051CAD5F0900F0B991 /* Build configuration list for PBXProject "LogInOutReg" */ = {
+		5D80D0051CAD5F0900F0B991 /* Build configuration list for PBXProject "BingoBlast" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D80D01F1CAD5F0900F0B991 /* Debug */,
@@ -646,7 +648,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5D80D0211CAD5F0900F0B991 /* Build configuration list for PBXNativeTarget "LogInOutReg" */ = {
+		5D80D0211CAD5F0900F0B991 /* Build configuration list for PBXNativeTarget "BingoBlast" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D80D0221CAD5F0900F0B991 /* Debug */,

@@ -16,11 +16,16 @@
     NSString *nameid;
     NSString *name;
     NSString *picture;
+    NSString * leaderboardwins;
+    NSString * playName;
+    NSUserDefaults * userDefaults;
 }
+
 
 @property (weak, nonatomic) IBOutlet UITableView *leaderboardTableView;
 @property (nonatomic,strong) NSMutableArray *leaderboardNameArray;
 @property (nonatomic,strong) NSMutableArray *leaderboardNumberArray;
+@property (weak, nonatomic) IBOutlet UILabel *myNumber;
 
 @end
 
@@ -29,6 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    userDefaults = [NSUserDefaults standardUserDefaults];
+    playName = [userDefaults objectForKey:@"Name"];
+    
+    
     
     self.navigationItem.title = @"排行榜";
     
@@ -49,6 +58,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.leaderboardTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,6 +71,7 @@
     nameid = @"fbID";
     name = @"user_nickname";
     picture = @"profile_picture";
+    leaderboardwins = @"victory_no";
     adata = [[NSMutableArray alloc] init];
     
     // Perform a real download.
@@ -89,12 +100,25 @@
                 NSString *strFbID = [dataDict objectForKey:@"fbID"];
                 NSString *strProfile = [dataDict objectForKey:@"profile_picture"];
                 NSString *strName = [dataDict objectForKey:@"user_nickname"];
-                dict = [NSDictionary dictionaryWithObjectsAndKeys:strFbID,nameid,strProfile,picture,strName,name,nil];
+                NSString * strWins = [dataDict objectForKey:@"victory_no"];
+                dict = [NSDictionary dictionaryWithObjectsAndKeys:strFbID,nameid,strProfile,picture,strName,name,strWins,leaderboardwins,nil];
                 [adata addObject:dict];
             }
             
             [self.leaderboardTableView reloadData];
             
+            for (int i = 0; i < adata.count ; i++) {
+                NSDictionary * info = [adata objectAtIndex:i];
+                NSString * name1 = @"user_nickname";
+                //NSString * victory = @"victory_no";
+                NSString * name2 = [info objectForKey:name1];
+                //NSString * victory1 = [info objectForKey:victory];
+                
+                if ([name2 isEqualToString:playName]) {
+                    self.myNumber.text = [info objectForKey:@"victory_no"];
+                    self.myNumber.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:25];
+                }
+            }
         });
         
     }];
@@ -117,9 +141,13 @@
     
     NSString *Number = self.leaderboardNumberArray[indexPath.row];
     cell.leaderboardNumber.text = [Number description];
+    cell.leaderboardNumber.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:20];
     
     NSDictionary *info = [adata objectAtIndex:indexPath.row];
     cell.leaderboardName.text = [info objectForKey:name];
+    cell.leaderboardName.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:15];
+    cell.wins.text = [info objectForKey:leaderboardwins];
+    
     
     
     NSString * fb = @"fbID";
@@ -176,6 +204,7 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 
 /*
