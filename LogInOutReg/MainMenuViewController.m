@@ -33,9 +33,9 @@
     [[GameCenterManager shardManager] authenticateLocalUserWith:self];
     userDefaults = [NSUserDefaults standardUserDefaults];
     self.userNameLabel.text = [userDefaults objectForKey:@"Name"];
-    self.useImageView.image = [UIImage imageNamed:@"123456.jpg"];
-    self.useImageView.layer.masksToBounds = true;
-    self.useImageView.layer.cornerRadius = 22.0;
+    //self.useImageView.image = [UIImage imageNamed:@"123456.jpg"];
+    //self.useImageView.layer.masksToBounds = true;
+    //self.useImageView.layer.cornerRadius = 22.0;
     
     NSLog(@"userNameLabel is : %@",self.userNameLabel.text);
     NSString *fbPictureUrl = [userDefaults objectForKey:@"pictureUrl"];
@@ -49,10 +49,12 @@
         self.useImageView.image = fbImage;
     }
     else if (![profilePicture isEqualToString:@""]) {
-        UIImage *image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
+        NSString *profilePictureUrl = [NSString stringWithFormat:@"http://1.34.9.137/HelloBingo/uploads/%@",profilePicture];
+        UIImage *profileImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePictureUrl]]];
         self.useImageView.layer.masksToBounds = true;
         self.useImageView.layer.cornerRadius = 22.0;
-        self.useImageView.image = image;
+        self.useImageView.image = profileImage;
+        return;
     }
     else {
         UIImage *image = [UIImage imageNamed:@"123456.jpg"];
@@ -64,15 +66,10 @@
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (void) viewWillAppear:(BOOL)animated
 {
     NSString *fbPictureUrl = [userDefaults objectForKey:@"pictureUrl"];
     NSString *profilePicture = [userDefaults objectForKey:@"ProfilePicture"];
-    
     
     if ([userDefaults boolForKey:@"isFBLoggedIn"] == true) {
         UIImage *fbImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:fbPictureUrl]]];
@@ -80,11 +77,13 @@
         self.useImageView.layer.cornerRadius = 22.0;
         self.useImageView.image = fbImage;
     }
-    else if ([profilePicture isEqualToString:@""]) {
-        UIImage *image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
+    else if (![profilePicture isEqualToString:@""]) {
+        NSString *profilePictureUrl = [NSString stringWithFormat:@"http://1.34.9.137/HelloBingo/uploads/%@",profilePicture];
+        UIImage *profileImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePictureUrl]]];
         self.useImageView.layer.masksToBounds = true;
         self.useImageView.layer.cornerRadius = 22.0;
-        self.useImageView.image = image;
+        self.useImageView.image = profileImage;
+        return;
     }
     else {
         UIImage *image = [UIImage imageNamed:@"123456.jpg"];

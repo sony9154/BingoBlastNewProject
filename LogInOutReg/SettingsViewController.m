@@ -55,10 +55,14 @@
     self.setttingPasswordTextField.text = [userDefaults objectForKey:@"Password"];
     }
 
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dimissKeyboard)];
-    [self.view addGestureRecognizer:tapRecognizer];
+    NSString * profilePicture = [userDefaults objectForKey:@"ProfilePicture"];
+    NSString *profilePictureUrl = [NSString stringWithFormat:@"http://1.34.9.137/HelloBingo/uploads/%@",profilePicture];
+    UIImage *profileImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePictureUrl]]];
+    if ([profilePicture isEqualToString:@""]) {
+        self.settingImageView.image = [UIImage imageNamed:@"123456.jpg"];
+    } else { self.settingImageView.image = profileImage; }
 
-
+    /*
     NSString *profilePicture = [userDefaults objectForKey:@"ProfilePicture"];
     UIImage *image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
     if (image == nil) {
@@ -67,7 +71,12 @@
     else if ([profilePicture isEqualToString:@""]) {
         self.settingImageView.image = image;
     }
-    
+
+     */
+
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dimissKeyboard)];
+    [self.view addGestureRecognizer:tapRecognizer];
+
 }
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -80,11 +89,11 @@
     self.systemLogOutButton.layer.borderColor = [UIColor blackColor].CGColor;
     self.systemLogOutButton.layer.borderWidth = 2.0f;
     self.systemLogOutButton.layer.cornerRadius = 10.0;
-    
-    
-    
+
+
+
 }- (IBAction)updateInfoBtnPressed:(UIButton *)sender {
-    
+
 
     accesssToken = [FBSDKAccessToken currentAccessToken];
     if(accesssToken){
@@ -218,6 +227,10 @@
         NSURLSessionDataTask *task2 = [session dataTaskWithRequest:request2];
         [task resume];
         [task2 resume];
+
+        [[NSUserDefaults standardUserDefaults]setObject:pictureName forKey:@"ProfilePicture"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+
         dispatch_async(dispatch_get_main_queue(), ^{
            [picker dismissViewControllerAnimated:true completion:nil];
         });

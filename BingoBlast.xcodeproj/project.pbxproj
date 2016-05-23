@@ -398,7 +398,11 @@
 				TargetAttributes = {
 					5D80D0091CAD5F0900F0B991 = {
 						CreatedOnToolsVersion = 7.3;
+<<<<<<< HEAD:BingoBlast.xcodeproj/project.pbxproj
 						DevelopmentTeam = G66UXEL2H5;
+=======
+						DevelopmentTeam = RX6S78692S;
+>>>>>>> 741db6480cb2343dec31bd8a665a735cfffbab59:LogInOutReg.xcodeproj/project.pbxproj
 					};
 				};
 			};
