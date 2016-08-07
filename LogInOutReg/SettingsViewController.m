@@ -2,7 +2,7 @@
 //  SettingsViewController.m
 //  LogInOutReg
 //
-//  Created by 陳韋中 on 2016/4/26.
+//  Created by 徐崧祐 on 2016/4/26.
 //  Copyright © 2016年 Peter Hsu. All rights reserved.
 //
 
@@ -14,7 +14,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "EntranceViewController.h"
 #import "MusicManager.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface SettingsViewController () <UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 {
@@ -30,6 +30,9 @@
 @property (weak, nonatomic) IBOutlet UIView *PersonalSettingView;
 @property (weak, nonatomic) IBOutlet UIImageView *systemTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *personalSettingTitle;
+@property (weak, nonatomic) IBOutlet UIButton *UpdateInfoButton;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UIButton *systemLogOutButton;
 
 @end
 
@@ -51,14 +54,16 @@
     } else {
     self.setttingPasswordTextField.text = [userDefaults objectForKey:@"Password"];
     }
-    
+
     NSString * profilePicture = [userDefaults objectForKey:@"ProfilePicture"];
     NSString *profilePictureUrl = [NSString stringWithFormat:@"http://1.34.9.137/HelloBingo/uploads/%@",profilePicture];
     UIImage *profileImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePictureUrl]]];
     if ([profilePicture isEqualToString:@""]) {
-        self.settingImageView.image = [UIImage imageNamed:@"123456.jpg"];
+            self.settingImageView.image = [UIImage imageNamed:@"123456.jpg"];
     } else { self.settingImageView.image = profileImage; }
-        
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dimissKeyboard)];
+    [self.view addGestureRecognizer:tapRecognizer];
     /*
     NSString *profilePicture = [userDefaults objectForKey:@"ProfilePicture"];
     UIImage *image = [UIImage imageWithData:[userDefaults objectForKey:@"image"]];
@@ -68,14 +73,24 @@
     else if ([profilePicture isEqualToString:@""]) {
         self.settingImageView.image = image;
     }
-     */
-    
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dimissKeyboard)];
-    [self.view addGestureRecognizer:tapRecognizer];
-
-//    self.settingNameTextField.delegate =self;
+    */
 }
-- (IBAction)updateInfoBtnPressed:(UIButton *)sender {
+-(void)viewDidAppear:(BOOL)animated
+{
+    [[self.UpdateInfoButton layer] setBorderWidth:2.0f];
+    [[self.UpdateInfoButton layer] setBorderColor:[UIColor blackColor].CGColor];
+    self.UpdateInfoButton.layer.cornerRadius = 10.0;
+    [[self.logoutButton layer] setBorderWidth:2.0f];
+    [[self.logoutButton layer] setBorderColor:[UIColor blackColor].CGColor];
+    self.logoutButton.layer.cornerRadius = 10.0;
+    self.systemLogOutButton.layer.borderColor = [UIColor blackColor].CGColor;
+    self.systemLogOutButton.layer.borderWidth = 2.0f;
+    self.systemLogOutButton.layer.cornerRadius = 10.0;
+    
+    
+    
+}- (IBAction)updateInfoBtnPressed:(UIButton *)sender {
+    
 
     accesssToken = [FBSDKAccessToken currentAccessToken];
     if(accesssToken){
@@ -209,10 +224,6 @@
         NSURLSessionDataTask *task2 = [session dataTaskWithRequest:request2];
         [task resume];
         [task2 resume];
-        
-        [[NSUserDefaults standardUserDefaults]setObject:pictureName forKey:@"ProfilePicture"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        
         dispatch_async(dispatch_get_main_queue(), ^{
            [picker dismissViewControllerAnimated:true completion:nil];
         });

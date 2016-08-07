@@ -71,6 +71,7 @@
     NSString *fbPictureUrl = [userDefaults objectForKey:@"pictureUrl"];
     NSString *profilePicture = [userDefaults objectForKey:@"ProfilePicture"];
     
+    
     if ([userDefaults boolForKey:@"isFBLoggedIn"] == true) {
         UIImage *fbImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:fbPictureUrl]]];
         self.useImageView.layer.masksToBounds = true;

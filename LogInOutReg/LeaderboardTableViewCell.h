@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *leaderboardImageView;
 @property (weak, nonatomic) IBOutlet UILabel *leaderboardName;
 @property (weak, nonatomic) IBOutlet UILabel *leaderboardNumber;
+@property (weak, nonatomic) IBOutlet UILabel *wins;
 
 @end

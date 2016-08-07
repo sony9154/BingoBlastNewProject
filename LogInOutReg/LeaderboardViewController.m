@@ -12,11 +12,20 @@
 @interface LeaderboardViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *adata;
+    NSDictionary *dict;
+    NSString *nameid;
+    NSString *name;
+    NSString *picture;
+    NSString * leaderboardwins;
+    NSString * playName;
+    NSUserDefaults * userDefaults;
 }
+
 
 @property (weak, nonatomic) IBOutlet UITableView *leaderboardTableView;
 @property (nonatomic,strong) NSMutableArray *leaderboardNameArray;
 @property (nonatomic,strong) NSMutableArray *leaderboardNumberArray;
+@property (weak, nonatomic) IBOutlet UILabel *myNumber;
 
 @end
 
@@ -25,6 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    userDefaults = [NSUserDefaults standardUserDefaults];
+    playName = [userDefaults objectForKey:@"Name"];
+    
+    
     
     self.navigationItem.title = @"排行榜";
     
@@ -45,6 +58,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.leaderboardTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,6 +67,12 @@
 }
 
 - (void) downloadNewsList {
+    
+    nameid = @"fbID";
+    name = @"user_nickname";
+    picture = @"profile_picture";
+    leaderboardwins = @"victory_no";
+    adata = [[NSMutableArray alloc] init];
     
     // Perform a real download.
     NSURL *url = [NSURL URLWithString:@"http://1.34.9.137:80/HelloBingo/takeFriendList.php"];
@@ -71,23 +91,39 @@
             return;
         }
         
-        // 處理下載來的 date，解碼並轉成字串
-//        NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        NSLog(@"content: %@",content);
-        
-        adata = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@" %@",jsonObject);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
+            for (NSDictionary *dataDict in jsonObject) {
+                NSString *strFbID = [dataDict objectForKey:@"fbID"];
+                NSString *strProfile = [dataDict objectForKey:@"profile_picture"];
+                NSString *strName = [dataDict objectForKey:@"user_nickname"];
+                NSString * strWins = [dataDict objectForKey:@"victory_no"];
+                dict = [NSDictionary dictionaryWithObjectsAndKeys:strFbID,nameid,strProfile,picture,strName,name,strWins,leaderboardwins,nil];
+                [adata addObject:dict];
+            }
+            
             [self.leaderboardTableView reloadData];
             
+            for (int i = 0; i < adata.count ; i++) {
+                NSDictionary * info = [adata objectAtIndex:i];
+                NSString * name1 = @"user_nickname";
+                //NSString * victory = @"victory_no";
+                NSString * name2 = [info objectForKey:name1];
+                //NSString * victory1 = [info objectForKey:victory];
+                
+                if ([name2 isEqualToString:playName]) {
+                    self.myNumber.text = [info objectForKey:@"victory_no"];
+                    self.myNumber.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:25];
+                }
+            }
         });
         
     }];
     
-    // 開始工作下載
-    [task resume];
-}
+    [task resume];}
 
 #pragma mark - TableView!
 
@@ -105,19 +141,61 @@
     
     NSString *Number = self.leaderboardNumberArray[indexPath.row];
     cell.leaderboardNumber.text = [Number description];
-    
-    //NSString *friend = self.leaderboardNameArray[indexPath.row];
-    //cell.leaderboardName.text = [friend description];
-    
-    UIImage *image = [UIImage imageNamed:@"123456.jpg"];
-    cell.leaderboardImageView.layer.masksToBounds = true;
-    cell.leaderboardImageView.layer.cornerRadius = 22.0;
-    cell.leaderboardImageView.image = image;
+    cell.leaderboardNumber.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:20];
     
     NSDictionary *info = [adata objectAtIndex:indexPath.row];
-    cell.leaderboardName.text = [info description];
+    cell.leaderboardName.text = [info objectForKey:name];
+    cell.leaderboardName.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:15];
+    cell.wins.text = [info objectForKey:leaderboardwins];
     
     
+    
+    NSString * fb = @"fbID";
+    NSString * fbval = [info objectForKey:fb];
+    
+    //    if(fbval != 0){
+    //        NSLog(@"fbID %@",fbval);
+    //    }else{
+    //        NSLog(@"fbID = 0");
+    //    }
+    
+    NSString * tmp = @"profile_picture";
+    NSString * tmpval = [info objectForKey:tmp];
+    
+    //    if(tmpval!= nil){
+    //        NSLog(@"picture %@",tmpval);
+    //    }else{
+    //        NSLog(@"picture = nil");
+    //    }
+    
+    if ((![tmpval  isEqualToString: @""])) {
+        NSString *idString = [info objectForKey:picture];
+        NSLog(@"%@",idString);
+        NSURL *baseURL = [NSURL URLWithString:@"http://1.34.9.137/HelloBingo/uploads/"];
+        NSURL *url = [baseURL URLByAppendingPathComponent:idString];
+//        NSLog(@"%@",url);
+        NSData *data =[NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:data];
+        cell.leaderboardImageView.image = image;
+        cell.leaderboardImageView.layer.masksToBounds = true;
+        cell.leaderboardImageView.layer.cornerRadius = 22.0;
+    } else if ((![fbval  isEqualToString: @"0"])){
+        NSString *fbIDString = [info objectForKey:nameid];
+        NSLog(@"%@",fbIDString);
+        NSString *profilePicURL = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=large", fbIDString];
+        NSLog(@"%@",profilePicURL);
+        NSURL *urlfbID = [NSURL URLWithString:profilePicURL];
+        NSData *datab =[NSData dataWithContentsOfURL:urlfbID];
+        UIImage *image = [UIImage imageWithData:datab];
+        cell.leaderboardImageView.layer.masksToBounds = true;
+        cell.leaderboardImageView.layer.cornerRadius = 22.0;
+        cell.leaderboardImageView.image = image;
+    } else {
+        UIImage *image = [UIImage imageNamed:@"123456.jpg"];
+        cell.leaderboardImageView.layer.masksToBounds = true;
+        cell.leaderboardImageView.layer.cornerRadius = 22.0;
+        cell.leaderboardImageView.image = image;
+    }
     return cell;
 }
 
@@ -126,6 +204,8 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 
 /*
 #pragma mark - Navigation
